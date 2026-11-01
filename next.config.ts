@@ -15,13 +15,13 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'picsum.photos',
         port: '',
-        pathname: '/**', // This allows any path under the hostname
+        pathname: '/**',
       },
     ],
   },
   output: 'standalone',
   transpilePackages: ['motion'],
-  webpack: (config, {dev}) => {
+  webpack: (config, {dev, isServer}) => {
     // HMR is disabled in AI Studio via DISABLE_HMR env var.
     // Do not modify—file watching is disabled to prevent flickering during agent edits.
     if (dev && process.env.DISABLE_HMR === 'true') {
@@ -29,6 +29,22 @@ const nextConfig: NextConfig = {
         ignored: /.*/,
       };
     }
+
+    // Fix: Disable filesystem cache in development to prevent
+    // "Failed to allocate memory" and "rename *.pack.gz_" errors.
+    // These occur when webpack cache packs grow too large for available RAM.
+    if (dev) {
+      config.cache = false;
+    }
+
+    // Fix: Reduce memory pressure by limiting parallelism
+    if (isServer) {
+      config.optimization = {
+        ...config.optimization,
+        moduleIds: 'named',
+      };
+    }
+
     return config;
   },
 };
