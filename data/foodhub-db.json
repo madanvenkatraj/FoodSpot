@@ -1,0 +1,1618 @@
+{
+  "users": [
+    {
+      "id": "usr_customer_1",
+      "name": "Aarav Sharma",
+      "username": "aarav",
+      "email": "customer@foodhub.com",
+      "passwordHash": "8cbff6f919b6ca293fe94b15fce8b8f183b8db4130aa7af1bf8b205f6eaa3605e7718fb76f2c74f07dcae5c14ea9a6d064c47bf97d0e66d135e88685cdb458b7",
+      "phone": "+1 (415) 890-2311",
+      "role": "customer",
+      "allowedWorkspaces": [
+        "customer"
+      ],
+      "mfaEnabled": false,
+      "mfaSecret": null,
+      "recoveryCodes": [],
+      "favorites": [
+        "rest_1",
+        "rest_2",
+        "rest_5"
+      ],
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "usr_admin_default",
+      "name": "FoodHub Admin (admin@gmail.com)",
+      "username": "admin",
+      "email": "admin@gmail.com",
+      "passwordHash": "59875482fda308c862719770844604af6639d0895ab0b23b023a74d3463e39664c455ecffcfa95df162af262d0904aeabce14078082ba9115c437b9d437def65",
+      "phone": "+1 (415) 890-9999",
+      "role": "admin",
+      "allowedWorkspaces": [
+        "admin"
+      ],
+      "mfaEnabled": false,
+      "mfaSecret": "JBSWY3DPEHPK3PXP",
+      "recoveryCodes": [
+        "FH26-9901",
+        "FH26-9902",
+        "FH26-9903",
+        "FH26-9904"
+      ],
+      "favorites": [],
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "usr_admin_1",
+      "name": "Elena Rostova (Admin)",
+      "username": "elena_admin",
+      "email": "admin@foodhub.com",
+      "passwordHash": "8cbff6f919b6ca293fe94b15fce8b8f183b8db4130aa7af1bf8b205f6eaa3605e7718fb76f2c74f07dcae5c14ea9a6d064c47bf97d0e66d135e88685cdb458b7",
+      "phone": "+1 (415) 890-9900",
+      "role": "admin",
+      "allowedWorkspaces": [
+        "admin"
+      ],
+      "mfaEnabled": true,
+      "mfaSecret": "JBSWY3DPEHPK3PXP",
+      "recoveryCodes": [
+        "FH26-9901",
+        "FH26-9902",
+        "FH26-9903",
+        "FH26-9904"
+      ],
+      "favorites": [],
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "usr_dual_1",
+      "name": "Vikram Mehta (Dual Workspace)",
+      "username": "dual_admin",
+      "email": "dual@foodhub.com",
+      "passwordHash": "8cbff6f919b6ca293fe94b15fce8b8f183b8db4130aa7af1bf8b205f6eaa3605e7718fb76f2c74f07dcae5c14ea9a6d064c47bf97d0e66d135e88685cdb458b7",
+      "phone": "+1 (415) 890-8800",
+      "role": "admin",
+      "allowedWorkspaces": [
+        "customer",
+        "admin"
+      ],
+      "mfaEnabled": true,
+      "mfaSecret": "JBSWY3DPEHPK3PXP",
+      "recoveryCodes": [
+        "DUAL-1001",
+        "DUAL-1002",
+        "DUAL-1003"
+      ],
+      "favorites": [
+        "rest_1"
+      ],
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "sessions": [],
+  "categories": [
+    {
+      "id": "cat_pizza",
+      "name": "Pizza",
+      "slug": "pizza",
+      "description": "Wood-fired Neapolitan sourdough pizzas & cheesy slices",
+      "image": "/images/dish-pizza.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cat_burgers",
+      "name": "Burger",
+      "slug": "burger",
+      "description": "Seared smash burgers, crispy chicken & brioche sliders",
+      "image": "/images/dish-burger.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cat_biryani",
+      "name": "Biryani",
+      "slug": "biryani",
+      "description": "Slow-cooked royal dum biryanis sealed in copper handis",
+      "image": "/images/dish-biryani.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cat_south_indian",
+      "name": "South Indian",
+      "slug": "south-indian",
+      "description": "Crispy ghee roast dosas, fluffy idlis & filter coffee",
+      "image": "/images/dish-south-indian.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cat_north_indian",
+      "name": "North Indian",
+      "slug": "north-indian",
+      "description": "Velvety makhani gravies, smoky tandoori kebabs & garlic naan",
+      "image": "/images/dish-north-indian.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cat_chinese",
+      "name": "Chinese",
+      "slug": "chinese",
+      "description": "Wok-tossed Hakka noodles, handcrafted dimsum & Sichuan bowls",
+      "image": "/images/dish-chinese.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cat_desserts",
+      "name": "Desserts",
+      "slug": "desserts",
+      "description": "Molten chocolate lava fondants, tiramisu & warm waffles",
+      "image": "/images/dish-dessert.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cat_cakes",
+      "name": "Cakes",
+      "slug": "cakes",
+      "description": "Belgian truffle celebration cakes, cheesecakes & pastries",
+      "image": "/images/dish-cake.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cat_ice_cream",
+      "name": "Ice Cream",
+      "slug": "ice-cream",
+      "description": "Small-batch Italian gelato, sundaes & artisan sorbets",
+      "image": "/images/dish-ice-cream.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cat_beverages",
+      "name": "Beverages",
+      "slug": "beverages",
+      "description": "Cold-pressed juices, mango lassi, boba & craft coolers",
+      "image": "/images/dish-beverage.svg",
+      "isActive": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "restaurants": [
+    {
+      "id": "rest_1",
+      "ownerId": "usr_restaurant_1",
+      "name": "Forno Di Pietra Kitchen",
+      "description": "72-hour fermented Neapolitan sourdough pizzas, truffle burrata plates, and wood-fired small plates.",
+      "cuisine": [
+        "Pizza",
+        "Italian",
+        "Desserts",
+        "Beverages"
+      ],
+      "image": "/images/dish-pizza.svg",
+      "address": "420 Valencia Street, Mission District, San Francisco, CA 94103",
+      "phone": "+1 (415) 890-4400",
+      "openingHours": "10:30 AM – 11:30 PM",
+      "isAvailable": true,
+      "isApproved": true,
+      "rating": 4.8,
+      "reviewCount": 342,
+      "deliveryTimeMinutes": 25,
+      "minOrderAmount": 15,
+      "deliveryFee": 2.99,
+      "featured": true,
+      "costForTwo": 38,
+      "isPureVeg": false,
+      "offerBadge": "50% OFF up to $12",
+      "serviceableZones": [
+        "Downtown San Francisco",
+        "Mission District",
+        "SoMa",
+        "Marina District",
+        "Castro",
+        "Pacific Heights"
+      ],
+      "isRecommended": true,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "rest_2",
+      "ownerId": "usr_restaurant_1",
+      "name": "Zaffran Royal Handi House",
+      "description": "Authentic slow-steamed Awadhi & Hyderabadi dum biryanis, smoky North Indian curries, and saffron kebabs.",
+      "cuisine": [
+        "Biryani",
+        "North Indian",
+        "Desserts",
+        "Beverages"
+      ],
+      "image": "/images/dish-biryani.svg",
+      "address": "785 Market Street, SoMa, San Francisco, CA 94102",
+      "phone": "+1 (415) 890-4402",
+      "openingHours": "11:00 AM – 11:30 PM",
+      "isAvailable": true,
+      "isApproved": true,
+      "rating": 4.9,
+      "reviewCount": 518,
+      "deliveryTimeMinutes": 28,
+      "minOrderAmount": 18,
+      "deliveryFee": 1.99,
+      "featured": true,
+      "costForTwo": 34,
+      "isPureVeg": false,
+      "offerBadge": "FREE DELIVERY",
+      "serviceableZones": [
+        "Downtown San Francisco",
+        "Mission District",
+        "SoMa",
+        "Marina District",
+        "Castro",
+        "Pacific Heights"
+      ],
+      "isRecommended": true,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "rest_3",
+      "ownerId": "usr_restaurant_1",
+      "name": "Ironclad Smash & Craft Grill",
+      "description": "Crispy lacy-edged Wagyu smash burgers, smoked chipotle aioli, loaded starters, and hand-spun shakes.",
+      "cuisine": [
+        "Burger",
+        "American",
+        "Beverages"
+      ],
+      "image": "/images/dish-burger.svg",
+      "address": "1120 Columbus Ave, Marina District, San Francisco, CA 94133",
+      "phone": "+1 (415) 890-4403",
+      "openingHours": "11:00 AM – 12:00 AM",
+      "isAvailable": true,
+      "isApproved": true,
+      "rating": 4.7,
+      "reviewCount": 289,
+      "deliveryTimeMinutes": 20,
+      "minOrderAmount": 12,
+      "deliveryFee": 0,
+      "featured": true,
+      "costForTwo": 30,
+      "isPureVeg": false,
+      "offerBadge": "FLAT $10 OFF",
+      "serviceableZones": [
+        "Downtown San Francisco",
+        "Mission District",
+        "SoMa",
+        "Marina District",
+        "Castro",
+        "Pacific Heights"
+      ],
+      "isRecommended": true,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "rest_4",
+      "ownerId": "usr_restaurant_1",
+      "name": "Atelier Cacao, Cakes & Gelato",
+      "description": "100% Pure Vegetarian French patisserie crafting Belgian chocolate cakes, molten fondants, and small-batch gelato.",
+      "cuisine": [
+        "Desserts",
+        "Cakes",
+        "Ice Cream",
+        "Beverages"
+      ],
+      "image": "/images/dish-cake.svg",
+      "address": "2150 Fillmore Street, Pacific Heights, San Francisco, CA 94115",
+      "phone": "+1 (415) 890-4404",
+      "openingHours": "09:00 AM – 10:30 PM",
+      "isAvailable": true,
+      "isApproved": true,
+      "rating": 4.9,
+      "reviewCount": 264,
+      "deliveryTimeMinutes": 22,
+      "minOrderAmount": 10,
+      "deliveryFee": 1.49,
+      "featured": true,
+      "costForTwo": 24,
+      "isPureVeg": true,
+      "offerBadge": "20% OFF DESSERTS",
+      "serviceableZones": [
+        "Downtown San Francisco",
+        "Mission District",
+        "SoMa",
+        "Marina District",
+        "Castro",
+        "Pacific Heights"
+      ],
+      "isRecommended": true,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "rest_5",
+      "ownerId": "usr_restaurant_1",
+      "name": "Dakshin Tiffin & Filter House",
+      "description": "100% Pure Vegetarian South Indian kitchen serving crispy Benne Masala Dosas, Ghee Podi Idlis, and degree filter coffee.",
+      "cuisine": [
+        "South Indian",
+        "North Indian",
+        "Beverages"
+      ],
+      "image": "/images/dish-south-indian.svg",
+      "address": "590 Valencia Street, Mission District, San Francisco, CA 94110",
+      "phone": "+1 (415) 890-4405",
+      "openingHours": "08:00 AM – 10:30 PM",
+      "isAvailable": true,
+      "isApproved": true,
+      "rating": 4.8,
+      "reviewCount": 412,
+      "deliveryTimeMinutes": 19,
+      "minOrderAmount": 12,
+      "deliveryFee": 0,
+      "featured": true,
+      "costForTwo": 22,
+      "isPureVeg": true,
+      "offerBadge": "FREE DELIVERY + 30% OFF",
+      "serviceableZones": [
+        "Downtown San Francisco",
+        "Mission District",
+        "SoMa",
+        "Marina District",
+        "Castro",
+        "Pacific Heights"
+      ],
+      "isRecommended": true,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "rest_6",
+      "ownerId": "usr_restaurant_1",
+      "name": "Red Lantern Wok & Dimsum Bar",
+      "description": "High-flame Sichuan wok noodles, handmade crystal har gow dimsum, crispy chili lotus stem, and iced fruit teas.",
+      "cuisine": [
+        "Chinese",
+        "Asian",
+        "Beverages",
+        "Desserts"
+      ],
+      "image": "/images/dish-chinese.svg",
+      "address": "840 Grant Avenue, Downtown San Francisco, CA 94108",
+      "phone": "+1 (415) 890-4406",
+      "openingHours": "11:30 AM – 11:30 PM",
+      "isAvailable": true,
+      "isApproved": true,
+      "rating": 4.6,
+      "reviewCount": 238,
+      "deliveryTimeMinutes": 26,
+      "minOrderAmount": 15,
+      "deliveryFee": 2.49,
+      "featured": false,
+      "costForTwo": 32,
+      "isPureVeg": false,
+      "offerBadge": "50% OFF up to $12",
+      "serviceableZones": [
+        "Downtown San Francisco",
+        "Mission District",
+        "SoMa",
+        "Marina District",
+        "Castro",
+        "Pacific Heights"
+      ],
+      "isRecommended": false,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "foodItems": [
+    {
+      "id": "food_1",
+      "restaurantId": "rest_1",
+      "categoryId": "cat_pizza",
+      "name": "Truffle Burrata & Wild Mushroom Sourdough Pizza",
+      "description": "San Marzano tomato base, creamy Pugliese burrata, roasted chanterelles, black truffle oil, and fresh sweet basil.",
+      "price": 22.5,
+      "image": "/images/dish-pizza.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Recommended",
+      "customizations": [
+        {
+          "id": "cust_crust_1",
+          "title": "Size & Crust Selection",
+          "required": true,
+          "options": [
+            {
+              "name": "Regular 10\" Sourdough",
+              "price": 0
+            },
+            {
+              "name": "Medium 12\" Charred Garlic Herb Crust",
+              "price": 2.5
+            },
+            {
+              "name": "Large 14\" Artisanal Wood-Fired",
+              "price": 5
+            }
+          ]
+        },
+        {
+          "id": "cust_top_1",
+          "title": "Extra Toppings & Add-Ons",
+          "required": false,
+          "options": [
+            {
+              "name": "Extra Whole Burrata Ball",
+              "price": 4.5
+            },
+            {
+              "name": "Calabrian Chili Honey Drizzle",
+              "price": 1.5
+            },
+            {
+              "name": "Shaved Black Summer Truffle",
+              "price": 3.5
+            }
+          ]
+        }
+      ],
+      "rating": 4.9,
+      "reviewCount": 148,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_2",
+      "restaurantId": "rest_1",
+      "categoryId": "cat_pizza",
+      "name": "Diavola Piccante & Hot Honey Pizza",
+      "description": "Wood-fired sourdough topped with Fior di Latte mozzarella, crispy artisanal pepperoni, crushed red chili, and wildflower hot honey.",
+      "price": 24,
+      "image": "/images/dish-pizza.svg",
+      "isVeg": false,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Pizza and Burgers",
+      "customizations": [
+        {
+          "id": "cust_crust_2",
+          "title": "Size & Crust Selection",
+          "required": true,
+          "options": [
+            {
+              "name": "Classic 12\" Sourdough",
+              "price": 0
+            },
+            {
+              "name": "Stuffed Smoked Mozzarella Edge",
+              "price": 3.5
+            }
+          ]
+        },
+        {
+          "id": "cust_spice_2",
+          "title": "Spice Level",
+          "required": true,
+          "options": [
+            {
+              "name": "Mild Pepperoni",
+              "price": 0
+            },
+            {
+              "name": "Medium Calabrian Chili",
+              "price": 0
+            },
+            {
+              "name": "Fiery Diavola + Extra Hot Honey",
+              "price": 1
+            }
+          ]
+        }
+      ],
+      "rating": 4.8,
+      "reviewCount": 112,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_101",
+      "restaurantId": "rest_1",
+      "categoryId": "cat_pizza",
+      "name": "Wood-Fired Garlic Rosemary Focaccia & Burrata Dip",
+      "description": "Blistered sourdough focaccia brushed with extra-virgin olive oil, sea salt, and whipped ricotta-pesto dip.",
+      "price": 12,
+      "image": "/images/dish-pizza.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": false,
+      "isBestseller": false,
+      "menuSection": "Starters",
+      "customizations": [
+        {
+          "id": "cust_dip_101",
+          "title": "Add-on Dips",
+          "required": false,
+          "options": [
+            {
+              "name": "Sun-Dried Tomato Tapenade",
+              "price": 1.5
+            },
+            {
+              "name": "Truffle Aioli Dip",
+              "price": 2
+            }
+          ]
+        }
+      ],
+      "rating": 4.7,
+      "reviewCount": 68,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_3",
+      "restaurantId": "rest_1",
+      "categoryId": "cat_desserts",
+      "name": "Classic Espresso Mascarpone Tiramisu",
+      "description": "Savoiardi ladyfingers soaked in single-origin espresso, layered with whipped mascarpone zabaglione and Valrhona cocoa.",
+      "price": 11.5,
+      "image": "/images/dish-dessert.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Desserts",
+      "customizations": [],
+      "rating": 4.9,
+      "reviewCount": 74,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_102",
+      "restaurantId": "rest_1",
+      "categoryId": "cat_beverages",
+      "name": "Sicilian Blood Orange & Basil Sparkling Cooler",
+      "description": "Freshly pressed Sicilian blood orange juice muddled with sweet basil leaves and San Pellegrino sparkling water.",
+      "price": 6.5,
+      "image": "/images/dish-beverage.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": false,
+      "isBestseller": false,
+      "menuSection": "Beverages",
+      "customizations": [
+        {
+          "id": "cust_ice_102",
+          "title": "Ice Preference",
+          "required": true,
+          "options": [
+            {
+              "name": "Regular Ice",
+              "price": 0
+            },
+            {
+              "name": "Less Ice",
+              "price": 0
+            }
+          ]
+        }
+      ],
+      "rating": 4.8,
+      "reviewCount": 51,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_4",
+      "restaurantId": "rest_2",
+      "categoryId": "cat_biryani",
+      "name": "Royal Zafrani Chicken Dum Biryani",
+      "description": "Long-grain aged basmati rice and succulent spiced chicken slow-cooked in a sealed copper handi with Kashmiri saffron, mint, and crispy birista.",
+      "price": 19.5,
+      "image": "/images/dish-biryani.svg",
+      "isVeg": false,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Rice and Biryani",
+      "customizations": [
+        {
+          "id": "cust_size_4",
+          "title": "Portion Size",
+          "required": true,
+          "options": [
+            {
+              "name": "Regular Handi (Serves 1-2)",
+              "price": 0
+            },
+            {
+              "name": "Royal Family Handi (Serves 3)",
+              "price": 9
+            }
+          ]
+        },
+        {
+          "id": "cust_spice_4",
+          "title": "Spice Calibration",
+          "required": true,
+          "options": [
+            {
+              "name": "Aromatic Mild",
+              "price": 0
+            },
+            {
+              "name": "Authentic Medium",
+              "price": 0
+            },
+            {
+              "name": "Fiery Hyderabadi",
+              "price": 0.5
+            }
+          ]
+        },
+        {
+          "id": "cust_side_4",
+          "title": "Accompaniments",
+          "required": false,
+          "options": [
+            {
+              "name": "Burhani Garlic Raita + Mirchi Ka Salan",
+              "price": 2.5
+            },
+            {
+              "name": "Extra Saffron Egg (2 pcs)",
+              "price": 2
+            }
+          ]
+        }
+      ],
+      "rating": 4.9,
+      "reviewCount": 265,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_5",
+      "restaurantId": "rest_2",
+      "categoryId": "cat_biryani",
+      "name": "Subz Paneer & Roasted Cashew Handi Biryani",
+      "description": "Char-grilled malai paneer cubes, baby potatoes, and golden cashews layered with rose-water and saffron infused basmati rice.",
+      "price": 17.5,
+      "image": "/images/dish-biryani.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Recommended",
+      "customizations": [
+        {
+          "id": "cust_spice_5",
+          "title": "Spice Calibration",
+          "required": true,
+          "options": [
+            {
+              "name": "Aromatic Mild",
+              "price": 0
+            },
+            {
+              "name": "Authentic Medium",
+              "price": 0
+            }
+          ]
+        }
+      ],
+      "rating": 4.8,
+      "reviewCount": 184,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_103",
+      "restaurantId": "rest_2",
+      "categoryId": "cat_north_indian",
+      "name": "Old Delhi Smoked Butter Chicken & Garlic Naan Combo",
+      "description": "Charcoal-smoked tandoori chicken tikka simmered in velvety tomato-fenugreek makhani gravy, served with 2 butter garlic naans.",
+      "price": 21,
+      "image": "/images/dish-north-indian.svg",
+      "isVeg": false,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Main Course",
+      "customizations": [
+        {
+          "id": "cust_bread_103",
+          "title": "Artisanal Bread Selection",
+          "required": true,
+          "options": [
+            {
+              "name": "2 Roasted Garlic Butter Naans",
+              "price": 0
+            },
+            {
+              "name": "2 Flaky Lachha Parathas",
+              "price": 1.5
+            },
+            {
+              "name": "Cheese & Chili Kulcha",
+              "price": 2.5
+            }
+          ]
+        }
+      ],
+      "rating": 4.9,
+      "reviewCount": 219,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_104",
+      "restaurantId": "rest_2",
+      "categoryId": "cat_north_indian",
+      "name": "Peshawari Malai Paneer Tikka (6 Pcs)",
+      "description": "Cottage cheese marinated in hung curd, crushed black pepper, green cardamom, and charred in a clay tandoor with mint chutney.",
+      "price": 14.5,
+      "image": "/images/dish-north-indian.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": false,
+      "isBestseller": false,
+      "menuSection": "Starters",
+      "customizations": [],
+      "rating": 4.8,
+      "reviewCount": 94,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_105",
+      "restaurantId": "rest_2",
+      "categoryId": "cat_beverages",
+      "name": "Alphonso Mango & Saffron Pistachio Lassi",
+      "description": "Thick churned artisanal yogurt blended with Ratnagiri Alphonso mango pulp, saffron strands, and toasted pistachios.",
+      "price": 6.99,
+      "image": "/images/dish-beverage.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": false,
+      "menuSection": "Beverages",
+      "customizations": [],
+      "rating": 4.9,
+      "reviewCount": 142,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_6",
+      "restaurantId": "rest_3",
+      "categoryId": "cat_burgers",
+      "name": "Double Wagyu Truffle Smash Burger",
+      "description": "Two seared wagyu smash patties, aged Vermont white cheddar, caramelized Vidalia onions, black garlic aioli on a toasted potato brioche bun.",
+      "price": 18,
+      "image": "/images/dish-burger.svg",
+      "isVeg": false,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Bestseller",
+      "customizations": [
+        {
+          "id": "cust_side_6",
+          "title": "Side Selection",
+          "required": true,
+          "options": [
+            {
+              "name": "Rosemary Sea-Salt Fries",
+              "price": 0
+            },
+            {
+              "name": "Truffle Parmesan Fries",
+              "price": 2.5
+            },
+            {
+              "name": "Crispy Onion Rings",
+              "price": 2
+            }
+          ]
+        },
+        {
+          "id": "cust_addon_6",
+          "title": "Burger Add-Ons",
+          "required": false,
+          "options": [
+            {
+              "name": "Extra Aged Cheddar Slice",
+              "price": 1.5
+            },
+            {
+              "name": "Crispy Smoked Turkey Bacon",
+              "price": 2.5
+            },
+            {
+              "name": "Pickled Jalapeños",
+              "price": 1
+            }
+          ]
+        }
+      ],
+      "rating": 4.8,
+      "reviewCount": 192,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_7",
+      "restaurantId": "rest_3",
+      "categoryId": "cat_burgers",
+      "name": "Crispy Avocado & Halloumi Brioche Burger",
+      "description": "Panko-crusted avocado wedges, griddled Cypriot halloumi cheese, pickled jalapeño slaw, and smoky chipotle glaze.",
+      "price": 16.5,
+      "image": "/images/dish-burger.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": false,
+      "menuSection": "Pizza and Burgers",
+      "customizations": [
+        {
+          "id": "cust_side_7",
+          "title": "Side Selection",
+          "required": true,
+          "options": [
+            {
+              "name": "Rosemary Sea-Salt Fries",
+              "price": 0
+            },
+            {
+              "name": "Sweet Potato Waffle Fries",
+              "price": 2
+            }
+          ]
+        }
+      ],
+      "rating": 4.7,
+      "reviewCount": 97,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_106",
+      "restaurantId": "rest_3",
+      "categoryId": "cat_burgers",
+      "name": "Nashville Hot Crispy Chicken Tenders (5 Pcs)",
+      "description": "Buttermilk-brined chicken tenders dusted in cayenne-brown sugar spice with house ranch and dill pickles.",
+      "price": 13.5,
+      "image": "/images/dish-burger.svg",
+      "isVeg": false,
+      "isAvailable": true,
+      "isPopular": false,
+      "isBestseller": false,
+      "menuSection": "Starters",
+      "customizations": [],
+      "rating": 4.7,
+      "reviewCount": 83,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_8",
+      "restaurantId": "rest_4",
+      "categoryId": "cat_desserts",
+      "name": "70% Valrhona Molten Chocolate Fondant",
+      "description": "Warm dark chocolate lava cake with a liquid ganache center, served with Madagascar vanilla bean crème anglaise and fresh raspberries.",
+      "price": 13.5,
+      "image": "/images/dish-dessert.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Bestseller",
+      "customizations": [
+        {
+          "id": "cust_scoop_8",
+          "title": "Gelato Pairing",
+          "required": false,
+          "options": [
+            {
+              "name": "Add Madagascar Vanilla Bean Gelato Scoop",
+              "price": 3
+            },
+            {
+              "name": "Add Sicilian Pistachio Gelato Scoop",
+              "price": 3.5
+            }
+          ]
+        }
+      ],
+      "rating": 4.9,
+      "reviewCount": 130,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_107",
+      "restaurantId": "rest_4",
+      "categoryId": "cat_cakes",
+      "name": "Belgian Hazelnut Praline Gateau Cake (500g)",
+      "description": "Three layers of moist chocolate sponge, crispy feuilletine hazelnut praline crunch, and silky Belgian dark chocolate ganache.",
+      "price": 26,
+      "image": "/images/dish-cake.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Desserts",
+      "customizations": [
+        {
+          "id": "cust_cake_107",
+          "title": "Cake Weight & Plaque",
+          "required": true,
+          "options": [
+            {
+              "name": "500g (4-6 Slices)",
+              "price": 0
+            },
+            {
+              "name": "1 Kg Celebration Size (10-12 Slices)",
+              "price": 18
+            }
+          ]
+        }
+      ],
+      "rating": 4.9,
+      "reviewCount": 156,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_108",
+      "restaurantId": "rest_4",
+      "categoryId": "cat_ice_cream",
+      "name": "Trio Artisanal Italian Gelato Tub (3 Scoops)",
+      "description": "Hand-churned Bronte pistachio, Piedmont dark hazelnut, and wild strawberry sorbetto in an insulated tub with waffle cones.",
+      "price": 14,
+      "image": "/images/dish-ice-cream.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": false,
+      "menuSection": "Recommended",
+      "customizations": [
+        {
+          "id": "cust_top_108",
+          "title": "Artisanal Toppings",
+          "required": false,
+          "options": [
+            {
+              "name": "Warm Belgian Hot Fudge",
+              "price": 1.5
+            },
+            {
+              "name": "Roasted Almond Praline Crumble",
+              "price": 1.5
+            }
+          ]
+        }
+      ],
+      "rating": 4.8,
+      "reviewCount": 118,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_109",
+      "restaurantId": "rest_5",
+      "categoryId": "cat_south_indian",
+      "name": "Davangere Benne Ghee Roast Masala Dosa",
+      "description": "Golden crispy fermented rice-lentil crepe roasted in farm white butter, spiced potato palya, gunpowder podi, and 3 chutneys + sambar.",
+      "price": 13.99,
+      "image": "/images/dish-south-indian.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Recommended",
+      "customizations": [
+        {
+          "id": "cust_dosa_109",
+          "title": "Ghee & Podi Customizations",
+          "required": false,
+          "options": [
+            {
+              "name": "Extra Homemade Ghee Drizzle",
+              "price": 1.5
+            },
+            {
+              "name": "Add Mysore Molagapodi Spice Rub",
+              "price": 1
+            }
+          ]
+        }
+      ],
+      "rating": 4.9,
+      "reviewCount": 310,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_110",
+      "restaurantId": "rest_5",
+      "categoryId": "cat_south_indian",
+      "name": "Ghee Podi Thatte Idli & Crispy Medu Vada Platter",
+      "description": "Fluffy steamed rice cakes tossed in sesame-lentil gunpowder and cow ghee alongside two crunchy lentil doughnut vadas.",
+      "price": 11.99,
+      "image": "/images/dish-south-indian.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Bestseller",
+      "customizations": [],
+      "rating": 4.8,
+      "reviewCount": 189,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_111",
+      "restaurantId": "rest_5",
+      "categoryId": "cat_beverages",
+      "name": "Kumbakonam Brass Davara Filter Coffee (Flask)",
+      "description": "Slow-percolated Chikmagalur Arabica & chicory decoction frothed with boiling farm milk, served in a thermal travel flask.",
+      "price": 5.5,
+      "image": "/images/dish-beverage.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": false,
+      "menuSection": "Beverages",
+      "customizations": [
+        {
+          "id": "cust_sugar_111",
+          "title": "Sweetness Level",
+          "required": true,
+          "options": [
+            {
+              "name": "Traditional Organic Jaggery",
+              "price": 0.5
+            },
+            {
+              "name": "Classic Cane Sugar",
+              "price": 0
+            },
+            {
+              "name": "No Sugar",
+              "price": 0
+            }
+          ]
+        }
+      ],
+      "rating": 4.9,
+      "reviewCount": 205,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_112",
+      "restaurantId": "rest_6",
+      "categoryId": "cat_chinese",
+      "name": "Sichuan Chili Oil Hakka Noodles & Crispy Manchurian Bowl",
+      "description": "High-flame wok-tossed noodles with charred bok choy, scallions, house chili crisp, and glazed vegetable manchurian dumplings.",
+      "price": 16.99,
+      "image": "/images/dish-chinese.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Main Course",
+      "customizations": [
+        {
+          "id": "cust_spice_112",
+          "title": "Wok Spice Level",
+          "required": true,
+          "options": [
+            {
+              "name": "Mild Garlic Soy",
+              "price": 0
+            },
+            {
+              "name": "Medium Sichuan Chili Crisp",
+              "price": 0
+            },
+            {
+              "name": "Extra Numbing Mala Peppercorn",
+              "price": 1
+            }
+          ]
+        }
+      ],
+      "rating": 4.7,
+      "reviewCount": 164,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "food_113",
+      "restaurantId": "rest_6",
+      "categoryId": "cat_chinese",
+      "name": "Steamed Truffle Edamame & Shiitake Crystal Dimsum (6 Pcs)",
+      "description": "Translucent hand-pleated wheat-starch dumplings filled with sweet edamame, roasted shiitake, water chestnuts, and white truffle oil.",
+      "price": 14.5,
+      "image": "/images/dish-chinese.svg",
+      "isVeg": true,
+      "isAvailable": true,
+      "isPopular": true,
+      "isBestseller": true,
+      "menuSection": "Starters",
+      "customizations": [],
+      "rating": 4.8,
+      "reviewCount": 122,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "carts": [],
+  "addresses": [
+    {
+      "id": "addr_1",
+      "userId": "usr_customer_1",
+      "label": "Home",
+      "recipientName": "Aarav Sharma",
+      "phone": "+1 (415) 890-2311",
+      "street": "742 Evergreen Terrace, Apt 4B, Mission District",
+      "city": "San Francisco",
+      "state": "CA",
+      "postalCode": "94107",
+      "instructions": "Gate code #4821 — leave at front concierge desk if busy.",
+      "isDefault": true,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "addr_2",
+      "userId": "usr_customer_1",
+      "label": "Work",
+      "recipientName": "Aarav Sharma",
+      "phone": "+1 (415) 890-2311",
+      "street": "500 Howard Street, Floor 14, SoMa",
+      "city": "San Francisco",
+      "state": "CA",
+      "postalCode": "94105",
+      "instructions": "Call on arrival at the South Lobby.",
+      "isDefault": false,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord_1001",
+      "orderNumber": "FH-1001",
+      "customerId": "usr_customer_1",
+      "customerName": "Aarav Sharma",
+      "customerEmail": "customer@foodhub.com",
+      "restaurantId": "rest_1",
+      "restaurantName": "Forno Di Pietra Kitchen",
+      "deliveryPartnerId": "dp_1",
+      "deliveryPartnerName": "Rohan Verma",
+      "items": [
+        {
+          "id": "oi_1001_1",
+          "orderId": "ord_1001",
+          "foodItemId": "food_1",
+          "name": "Truffle Burrata & Wild Mushroom Sourdough Pizza",
+          "quantity": 1,
+          "basePrice": 22.5,
+          "selectedCustomizations": [
+            {
+              "groupTitle": "Size & Crust Selection",
+              "optionName": "Regular 10\" Sourdough",
+              "price": 0
+            },
+            {
+              "groupTitle": "Extra Toppings & Add-Ons",
+              "optionName": "Calabrian Chili Honey Drizzle",
+              "price": 1.5
+            }
+          ],
+          "unitTotal": 24,
+          "lineTotal": 24,
+          "isVeg": true
+        },
+        {
+          "id": "oi_1001_2",
+          "orderId": "ord_1001",
+          "foodItemId": "food_3",
+          "name": "Classic Espresso Mascarpone Tiramisu",
+          "quantity": 1,
+          "basePrice": 11.5,
+          "selectedCustomizations": [],
+          "unitTotal": 11.5,
+          "lineTotal": 11.5,
+          "isVeg": true
+        }
+      ],
+      "subtotal": 35.5,
+      "deliveryFee": 2.99,
+      "taxAmount": 2.84,
+      "discountAmount": 5,
+      "couponCode": "WELCOME50",
+      "totalAmount": 36.33,
+      "status": "out_for_delivery",
+      "addressSnapshot": {
+        "label": "Home",
+        "recipientName": "Aarav Sharma",
+        "phone": "+1 (415) 890-2311",
+        "street": "742 Evergreen Terrace, Apt 4B",
+        "city": "San Francisco",
+        "state": "CA",
+        "postalCode": "94107"
+      },
+      "contactPhone": "+1 (415) 890-2311",
+      "deliveryInstructions": "Gate code #4821 — leave at front concierge desk if busy.",
+      "statusTimeline": [
+        {
+          "status": "placed",
+          "label": "Order Placed",
+          "timestamp": "2026-11-01T06:53:05.011Z",
+          "note": "Order confirmed without online payment processing",
+          "actorRole": "customer"
+        },
+        {
+          "status": "accepted",
+          "label": "Restaurant Accepted",
+          "timestamp": "2026-11-01T07:03:05.016Z",
+          "note": "Forno Di Pietra Kitchen accepted your order",
+          "actorRole": "restaurant"
+        },
+        {
+          "status": "preparing",
+          "label": "Preparing Food",
+          "timestamp": "2026-11-01T07:03:05.016Z",
+          "note": "Chef Marco is firing your sourdough pizza",
+          "actorRole": "restaurant"
+        },
+        {
+          "status": "ready_for_pickup",
+          "label": "Ready for Pickup",
+          "timestamp": "2026-11-01T07:13:05.016Z",
+          "note": "Packed with thermal seal and ready for rider",
+          "actorRole": "restaurant"
+        },
+        {
+          "status": "picked_up",
+          "label": "Picked Up",
+          "timestamp": "2026-11-01T07:13:05.016Z",
+          "note": "Picked up by delivery partner Rohan Verma",
+          "actorRole": "delivery"
+        },
+        {
+          "status": "out_for_delivery",
+          "label": "Out for Delivery",
+          "timestamp": "2026-11-01T07:23:04.813Z",
+          "note": "Rohan is en route to 742 Evergreen Terrace",
+          "actorRole": "delivery"
+        }
+      ],
+      "cancellationReason": null,
+      "createdAt": "2026-11-01T06:53:05.011Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "orderItems": [
+    {
+      "id": "oi_1001_1",
+      "orderId": "ord_1001",
+      "foodItemId": "food_1",
+      "name": "Truffle Burrata & Wild Mushroom Sourdough Pizza",
+      "quantity": 1,
+      "basePrice": 22.5,
+      "selectedCustomizations": [
+        {
+          "groupTitle": "Size & Crust Selection",
+          "optionName": "Regular 10\" Sourdough",
+          "price": 0
+        },
+        {
+          "groupTitle": "Extra Toppings & Add-Ons",
+          "optionName": "Calabrian Chili Honey Drizzle",
+          "price": 1.5
+        }
+      ],
+      "unitTotal": 24,
+      "lineTotal": 24,
+      "isVeg": true
+    },
+    {
+      "id": "oi_1001_2",
+      "orderId": "ord_1001",
+      "foodItemId": "food_3",
+      "name": "Classic Espresso Mascarpone Tiramisu",
+      "quantity": 1,
+      "basePrice": 11.5,
+      "selectedCustomizations": [],
+      "unitTotal": 11.5,
+      "lineTotal": 11.5,
+      "isVeg": true
+    }
+  ],
+  "deliveryPartners": [
+    {
+      "id": "dp_1",
+      "userId": "usr_delivery_1",
+      "name": "Rohan Verma",
+      "phone": "+1 (415) 890-7788",
+      "email": "rider@foodhub.com",
+      "vehicleType": "Electric Bike",
+      "vehicleNumber": "CA-EV-8842",
+      "isAvailable": true,
+      "currentZone": "Mission & SoMa District",
+      "totalDeliveries": 148,
+      "rating": 4.9,
+      "earningsTotal": 1842.5,
+      "createdAt": "2026-11-01T07:23:04.813Z",
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "deliveries": [
+    {
+      "id": "del_1001",
+      "orderId": "ord_1001",
+      "orderNumber": "FH-1001",
+      "partnerId": "dp_1",
+      "partnerName": "Rohan Verma",
+      "restaurantId": "rest_1",
+      "restaurantName": "Forno Di Pietra Kitchen",
+      "pickupAddress": "420 Valencia Street, Mission District, San Francisco, CA 94103",
+      "dropoffAddress": "742 Evergreen Terrace, Apt 4B, San Francisco, CA 94107",
+      "customerName": "Aarav Sharma",
+      "customerPhone": "+1 (415) 890-2311",
+      "status": "out_for_delivery",
+      "deliveryFeeEarned": 5.5,
+      "assignedAt": "2026-11-01T07:03:05.016Z",
+      "pickedUpAt": "2026-11-01T07:13:05.016Z",
+      "deliveredAt": null,
+      "updatedAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rev_1",
+      "customerId": "usr_customer_1",
+      "customerName": "Aarav Sharma",
+      "restaurantId": "rest_1",
+      "restaurantName": "Forno Di Pietra Kitchen",
+      "foodItemId": "food_1",
+      "orderId": "ord_1001",
+      "rating": 5,
+      "comment": "The 72-hour sourdough crust has genuine wood-fired leopard charring and the truffle burrata arrived fresh and creamy.",
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "rev_2",
+      "customerId": "usr_customer_1",
+      "customerName": "Aarav Sharma",
+      "restaurantId": "rest_2",
+      "restaurantName": "Zaffran Royal Handi House",
+      "foodItemId": "food_4",
+      "orderId": null,
+      "rating": 5,
+      "comment": "Unsealing the pastry-covered dum handi at home released incredible saffron aroma. Generous portions and fast delivery.",
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "rev_3",
+      "customerId": "usr_customer_1",
+      "customerName": "Aarav Sharma",
+      "restaurantId": "rest_5",
+      "restaurantName": "Dakshin Tiffin & Filter House",
+      "foodItemId": "food_109",
+      "orderId": null,
+      "rating": 5,
+      "comment": "Crispy Benne Masala Dosa stayed golden and crunchy even on delivery, and the brass davara filter coffee is unmatched!",
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "coupons": [
+    {
+      "id": "cpn_1",
+      "code": "WELCOME50",
+      "description": "50% off your food order (up to $12 discount on orders $15+)",
+      "discountType": "percentage",
+      "discountValue": 50,
+      "minOrderValue": 15,
+      "maxDiscount": 12,
+      "isActive": true,
+      "expiresAt": "2027-12-31T23:59:59.000Z",
+      "usageCount": 18,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cpn_2",
+      "code": "FREEDEL",
+      "description": "Zero delivery fee on orders above $15",
+      "discountType": "free_delivery",
+      "discountValue": 100,
+      "minOrderValue": 15,
+      "maxDiscount": 10,
+      "isActive": true,
+      "expiresAt": "2027-12-31T23:59:59.000Z",
+      "usageCount": 42,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cpn_3",
+      "code": "FEAST10",
+      "description": "Flat $10 off on gourmet orders above $35",
+      "discountType": "fixed",
+      "discountValue": 10,
+      "minOrderValue": 35,
+      "maxDiscount": 10,
+      "isActive": true,
+      "expiresAt": "2027-12-31T23:59:59.000Z",
+      "usageCount": 9,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    },
+    {
+      "id": "cpn_4",
+      "code": "VEG30",
+      "description": "30% off Pure Veg & South Indian delicacies (up to $8)",
+      "discountType": "percentage",
+      "discountValue": 30,
+      "minOrderValue": 12,
+      "maxDiscount": 8,
+      "isActive": true,
+      "expiresAt": "2027-12-31T23:59:59.000Z",
+      "usageCount": 27,
+      "createdAt": "2026-11-01T07:23:04.813Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif_1",
+      "userId": "usr_customer_1",
+      "targetRole": "customer",
+      "type": "order_out_for_delivery",
+      "title": "Order #FH-1001 is Out for Delivery",
+      "message": "Rohan Verma has picked up your order from Forno Di Pietra Kitchen.",
+      "relatedOrderId": "ord_1001",
+      "relatedOrderNumber": "FH-1001",
+      "relatedTicketNumber": null,
+      "emailDeliveryStatus": "queued_local",
+      "isRead": false,
+      "createdAt": "2026-11-01T07:13:05.016Z"
+    },
+    {
+      "id": "notif_2",
+      "userId": "usr_customer_1",
+      "targetRole": "customer",
+      "type": "ticket_reply",
+      "title": "New Reply on Ticket YNT-2026-1042",
+      "message": "Yantra Ticketing Agent replied: Verified Order #FH-1001 with Forno Di Pietra Kitchen.",
+      "relatedOrderId": "ord_1001",
+      "relatedOrderNumber": "FH-1001",
+      "relatedTicketNumber": "YNT-2026-1042",
+      "emailDeliveryStatus": "queued_local",
+      "isRead": false,
+      "createdAt": "2026-11-01T07:13:05.016Z"
+    }
+  ],
+  "supportTicketReferences": [
+    {
+      "id": "tkt_1",
+      "ticketNumber": "YNT-2026-1042",
+      "customerId": "usr_customer_1",
+      "customerName": "Aarav Sharma",
+      "customerEmail": "customer@foodhub.com",
+      "customerPhone": "+1 (415) 890-2311",
+      "orderId": "ord_1001",
+      "orderNumber": "FH-1001",
+      "category": "Delayed deliveries",
+      "subject": "Checking live ETA for order FH-1001",
+      "description": "Hi team, my order FH-1001 is out for delivery. Could you confirm if the chili honey drizzle side was packed?",
+      "priority": "medium",
+      "status": "in_progress",
+      "accessToken": "ytok_34d5194bd6eaafedcc98354a52f0c26f",
+      "assignedAgent": "Yantra AI Triage & Dispatch Agent",
+      "routingDepartment": "Live Order & Delivery Operations",
+      "resolutionSummary": null,
+      "resolvedAt": null,
+      "lastEventTimestamp": 1793517785,
+      "messages": [
+        {
+          "id": "msg_1",
+          "ticketNumber": "YNT-2026-1042",
+          "senderType": "customer",
+          "senderName": "Aarav Sharma",
+          "message": "Hi team, my order FH-1001 is out for delivery. Could you confirm if the chili honey drizzle side was packed?",
+          "createdAt": "2026-11-01T07:03:05.016Z"
+        },
+        {
+          "id": "msg_2",
+          "ticketNumber": "YNT-2026-1042",
+          "senderType": "agent",
+          "senderName": "Yantra Ticketing Agent",
+          "message": "Hello Aarav! I verified Order #FH-1001 with Forno Di Pietra Kitchen and rider Rohan Verma. Your Calabrian Chili Honey Drizzle was sealed inside the thermal box, and Rohan is 6 minutes away.",
+          "createdAt": "2026-11-01T07:13:05.016Z"
+        }
+      ],
+      "createdAt": "2026-11-01T07:03:05.016Z",
+      "updatedAt": "2026-11-01T07:13:05.016Z"
+    }
+  ],
+  "webhookEvents": [
+    {
+      "id": "wh_1",
+      "deliveryId": "deliv_yantra_init_001",
+      "eventType": "ticket.message",
+      "ticketNumber": "YNT-2026-1042",
+      "signatureHeader": "t=1793517785,v1=c111bdcdc2217427bfc476c6477ce4a600fa0499fc21ff569734971b69364d9e",
+      "timestamp": 1793517785,
+      "rawPayload": "{\"event\":\"ticket.message\",\"ticketNumber\":\"YNT-2026-1042\",\"timestamp\":1793517785,\"data\":{\"ticketNumber\":\"YNT-2026-1042\",\"status\":\"in_progress\",\"message\":{\"id\":\"msg_2\",\"senderType\":\"agent\",\"senderName\":\"Yantra Ticketing Agent\",\"message\":\"Hello Aarav! I verified Order #FH-1001 with Forno Di Pietra Kitchen and rider Rohan Verma.\"}}}",
+      "status": "processed",
+      "httpStatus": 200,
+      "errorMessage": null,
+      "processedAt": "2026-11-01T07:13:05.016Z"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "aud_1",
+      "actorId": "usr_customer_1",
+      "actorName": "Aarav Sharma",
+      "actorRole": "customer",
+      "action": "ORDER_CREATED",
+      "resourceType": "Order",
+      "resourceId": "FH-1001",
+      "details": "Order FH-1001 placed without payment processing ($36.33 total)",
+      "ipAddress": "127.0.0.1",
+      "createdAt": "2026-11-01T06:53:05.011Z"
+    },
+    {
+      "id": "aud_2",
+      "actorId": "yantra_webhook",
+      "actorName": "Yantra Webhook Engine",
+      "actorRole": "yantra_webhook",
+      "action": "WEBHOOK_VERIFIED",
+      "resourceType": "WebhookEvent",
+      "resourceId": "deliv_yantra_init_001",
+      "details": "HMAC-SHA256 verified event ticket.message for YNT-2026-1042",
+      "ipAddress": "127.0.0.1",
+      "createdAt": "2026-11-01T07:13:05.016Z"
+    }
+  ],
+  "yantraConfig": {
+    "platformUrl": "https://www.yantraaicofounder.com",
+    "apiKey": "ytk_Hbp3SOJN4gerV_RrDtwzxEORf3_sq4s2BLByEzZUVgTVOP4E",
+    "webhookSecret": "whsec_yantra_foodhub_hmac_sha256_secret_2026",
+    "mode": "hybrid_sandbox",
+    "welcomeMessage": "Welcome to FoodHub Support powered by Yantra Ticketing Agent. Select an issue or link an order for immediate assistance.",
+    "supportTitle": "FoodHub × Yantra Support Agent",
+    "primaryColor": "#E23744",
+    "enabled": true,
+    "appDomain": "foodhub.app",
+    "appDescription": "FoodHub is an online food ordering and delivery platform with live order tracking, restaurant menus, and customer support.",
+    "webhookUrl": "/api/webhooks/yantra/tickets",
+    "webhookEnabled": true,
+    "webhookConsecutiveFailures": 0,
+    "webhookPausedUntil": null
+  }
+}

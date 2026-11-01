@@ -1,0 +1,6 @@
+{
+  "name": "FoodHub — Online Food Ordering & Delivery Platform",
+  "description": "End-to-end multi-role food ordering and delivery platform with real-time order tracking, restaurant & delivery partner dashboards, admin analytics, and Yantra Ticketing Agent integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

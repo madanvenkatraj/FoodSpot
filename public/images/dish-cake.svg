@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <radialGradient id="bgCake" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FDF2F8"/>
+      <stop offset="100%" stop-color="#FCE7F3"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" rx="24" fill="url(#bgCake)"/>
+  <!-- Cake Stand -->
+  <ellipse cx="200" cy="225" rx="115" ry="20" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="3"/>
+  <rect x="182" y="225" width="36" height="28" rx="6" fill="#E2E8F0"/>
+  <ellipse cx="200" cy="255" rx="60" ry="10" fill="#CBD5E1"/>
+  <!-- Cake Layers -->
+  <rect x="115" y="125" width="170" height="95" rx="14" fill="#78350F"/>
+  <rect x="115" y="155" width="170" height="12" fill="#FBCFE8"/>
+  <rect x="115" y="185" width="170" height="12" fill="#FBCFE8"/>
+  <!-- Chocolate Ganache Drip -->
+  <path d="M115 135 Q130 165 142 138 T172 142 T202 138 T232 145 T262 136 T285 138 L285 125 L115 125 Z" fill="#451A03"/>
+  <!-- Whipped Cream & Cherries on Top -->
+  <circle cx="145" cy="118" r="11" fill="#FFF1F2"/>
+  <circle cx="182" cy="118" r="11" fill="#FFF1F2"/>
+  <circle cx="218" cy="118" r="11" fill="#FFF1F2"/>
+  <circle cx="255" cy="118" r="11" fill="#FFF1F2"/>
+  <circle cx="145" cy="108" r="7" fill="#E11D48"/>
+  <circle cx="182" cy="108" r="7" fill="#E11D48"/>
+  <circle cx="218" cy="108" r="7" fill="#E11D48"/>
+  <circle cx="255" cy="108" r="7" fill="#E11D48"/>
+</svg>

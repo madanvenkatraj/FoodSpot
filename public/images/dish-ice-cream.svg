@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <radialGradient id="bgIceCream" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#F0F9FF"/>
+      <stop offset="100%" stop-color="#E0F2FE"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" rx="24" fill="url(#bgIceCream)"/>
+  <!-- Glass Coupe Bowl -->
+  <path d="M125 165 Q200 245 275 165 Z" fill="#F8FAFC" stroke="#94A3B8" stroke-width="3"/>
+  <rect x="190" y="205" width="20" height="38" fill="#CBD5E1"/>
+  <ellipse cx="200" cy="245" rx="52" ry="10" fill="#94A3B8"/>
+  <!-- Gelato Scoops -->
+  <circle cx="165" cy="145" r="36" fill="#F472B6"/>
+  <circle cx="235" cy="145" r="36" fill="#FEF08A"/>
+  <circle cx="200" cy="112" r="38" fill="#A7F3D0"/>
+  <!-- Waffle Wafer & Chocolate Sauce -->
+  <polygon points="230,72 268,90 242,126" fill="#D97706" stroke="#92400E" stroke-width="2"/>
+  <path d="M172 100 Q200 128 228 100" stroke="#78350F" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle cx="200" cy="78" r="9" fill="#E11D48"/>
+</svg>

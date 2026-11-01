@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <radialGradient id="bgNorth" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#FFF7ED"/>
+      <stop offset="100%" stop-color="#FFEDD5"/>
+    </radialGradient>
+    <radialGradient id="makhani" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#EA580C"/>
+      <stop offset="70%" stop-color="#C2410C"/>
+      <stop offset="100%" stop-color="#9A3412"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" rx="24" fill="url(#bgNorth)"/>
+  <!-- Copper Thali Platter -->
+  <circle cx="200" cy="155" r="118" fill="#B45309" stroke="#78350F" stroke-width="5"/>
+  <circle cx="200" cy="155" r="108" fill="#FEF3C7"/>
+  <!-- Butter Chicken / Paneer Makhani Copper Handi -->
+  <circle cx="155" cy="145" r="56" fill="#78350F"/>
+  <circle cx="155" cy="145" r="50" fill="url(#makhani)"/>
+  <!-- Cream Swirl & Paneer Cubes -->
+  <path d="M135 140 Q155 120 175 145 T145 165" stroke="#FFFBEB" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <rect x="142" y="130" width="14" height="14" rx="3" fill="#FEFCE8" transform="rotate(12 142 130)"/>
+  <rect x="160" y="148" width="14" height="14" rx="3" fill="#FEFCE8" transform="rotate(-15 160 148)"/>
+  <!-- Garlic Butter Naan Wedges -->
+  <path d="M225 95 L285 135 L230 175 Z" fill="#FDE68A" stroke="#D97706" stroke-width="2.5"/>
+  <path d="M220 145 L285 180 L225 220 Z" fill="#FCD34D" stroke="#B45309" stroke-width="2.5"/>
+  <!-- Char spots & cilantro -->
+  <circle cx="248" cy="135" r="4" fill="#78350F"/>
+  <circle cx="245" cy="182" r="4.5" fill="#78350F"/>
+  <circle cx="155" cy="142" r="4" fill="#16A34A"/>
+</svg>

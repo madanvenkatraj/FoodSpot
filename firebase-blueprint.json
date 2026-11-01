@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "CustomerProfile": {
+      "title": "CustomerProfile",
+      "description": "Authenticated Customer App user profile synced via Firebase Google Authentication",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the customer",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Verified Google account email address",
+          "minLength": 3,
+          "maxLength": 254
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Customer display name from Google profile",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Customer avatar URL from Google profile",
+          "maxLength": 1024
+        },
+        "workspace": {
+          "type": "string",
+          "description": "Strictly locked to customer workspace",
+          "enum": ["customer"],
+          "maxLength": 16
+        },
+        "pushNotificationsEnabled": {
+          "type": "boolean",
+          "description": "Whether browser push notifications for order status changes are enabled"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the profile was first created"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the profile was last updated"
+        }
+      },
+      "required": [
+        "uid",
+        "email",
+        "displayName",
+        "workspace",
+        "pushNotificationsEnabled",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/customerProfiles/{userId}": {
+      "schema": {
+        "$ref": "#/entities/CustomerProfile"
+      },
+      "description": "Private customer workspace profiles keyed by Firebase Auth UID"
+    }
+  }
+}

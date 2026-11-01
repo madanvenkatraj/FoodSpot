@@ -1,0 +1,6 @@
+{
+  "summary":  "End-to-end implementation plan for the Yantra Ticketing Agent integration across FoodHub's Customer App and Admin Console using the Support Widget, Ticketing REST APIs (with live upstream forwarding + local fallback), and HMAC-verified Webhooks.",
+  "updatedAt":  "2026-10-31T11:19:44.842951674Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}

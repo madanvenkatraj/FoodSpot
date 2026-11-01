@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <radialGradient id="bgBev" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#ECFDF5"/>
+      <stop offset="100%" stop-color="#D1FAE5"/>
+    </radialGradient>
+    <linearGradient id="drinkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="50%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#E11D48"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" rx="24" fill="url(#bgBev)"/>
+  <!-- Tall Craft Beverage Glass -->
+  <rect x="148" y="75" width="104" height="175" rx="18" fill="#FFFFFF" stroke="#94A3B8" stroke-width="3"/>
+  <rect x="154" y="95" width="92" height="148" rx="14" fill="url(#drinkGrad)"/>
+  <!-- Ice Cubes -->
+  <rect x="168" y="112" width="24" height="24" rx="5" fill="#FFF7ED" fill-opacity="0.7" transform="rotate(10 168 112)"/>
+  <rect x="202" y="128" width="24" height="24" rx="5" fill="#FFF7ED" fill-opacity="0.7" transform="rotate(-12 202 128)"/>
+  <!-- Citrus Slice & Mint Garnish -->
+  <circle cx="248" cy="82" r="22" fill="#FACC15" stroke="#CA8A04" stroke-width="3"/>
+  <circle cx="175" cy="88" r="10" fill="#16A34A"/>
+  <!-- Reusable Straw -->
+  <path d="M188 220 L188 52 L218 42" stroke="#0F172A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
