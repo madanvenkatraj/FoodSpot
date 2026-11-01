@@ -1470,13 +1470,13 @@ function buildInitialSeedData(): DatabaseSchema {
       webhookSecret: secrets.webhookSecret,
       mode: 'hybrid_sandbox',
       welcomeMessage:
-        'Welcome to FoodHub Support powered by Yantra Ticketing Agent. Select an issue or link an order for immediate assistance.',
-      supportTitle: 'FoodHub × Yantra Support Agent',
+        'Welcome to FoodSpot Support powered by Yantra Ticketing Agent. Select an issue or link an order for immediate assistance.',
+      supportTitle: 'FoodSpot × Yantra Support Agent',
       primaryColor: '#E23744',
       enabled: true,
       appDomain: 'foodhub.app',
       appDescription:
-        'FoodHub is an online food ordering and delivery platform with live order tracking, restaurant menus, and customer support.',
+        'FoodSpot is an online food ordering and delivery platform with live order tracking, restaurant menus, and customer support.',
       webhookUrl: '/api/webhooks/yantra/tickets',
       webhookEnabled: true,
       webhookConsecutiveFailures: 0,

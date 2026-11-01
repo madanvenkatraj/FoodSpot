@@ -16,7 +16,7 @@ export default function NotFoundPage() {
             Route Not Found
           </h1>
           <p className="mt-1.5 text-xs text-stone-500 leading-relaxed">
-            The page you requested does not exist in the FoodHub Customer App or Admin Console
+            The page you requested does not exist in the FoodSpot Customer App or Admin Console
             workspaces.
           </p>
         </div>

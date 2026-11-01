@@ -570,7 +570,7 @@ export default function CustomerWorkspaceApp({
               </div>
               <div className="hidden sm:block">
                 <span className="font-display text-lg font-extrabold tracking-tight text-stone-950">
-                  FoodHub
+                  Food<span className="text-orange-600">Spot</span>
                 </span>
                 <span className="block text-[10px] font-bold uppercase tracking-wider text-orange-600">
                   Customer App
@@ -791,7 +791,7 @@ export default function CustomerWorkspaceApp({
                   <div className="lg:col-span-5 relative h-56 sm:h-64 rounded-2xl overflow-hidden border border-white/10">
                     <Image
                       src="/images/hero-food-banner.svg"
-                      alt="FoodHub Culinary Feast"
+                      alt="FoodSpot Culinary Feast"
                       fill
                       className="object-cover"
                       referrerPolicy="no-referrer"
@@ -1351,7 +1351,7 @@ export default function CustomerWorkspaceApp({
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="flex items-center justify-between">
               <h1 className="font-display text-2xl font-extrabold text-stone-900">
-                Your FoodHub Cart
+                Your FoodSpot Cart
               </h1>
               {cart.length > 0 && (
                 <button

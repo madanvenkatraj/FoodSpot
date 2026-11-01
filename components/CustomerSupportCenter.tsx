@@ -303,7 +303,7 @@ export default function CustomerSupportCenter({
             Order & Account Support Desk
           </h1>
           <p className="text-sm text-stone-600 mt-1 max-w-2xl">
-            Raise support tickets linked to your FoodHub orders, track real-time Yantra AI Agent
+            Raise support tickets linked to your FoodSpot orders, track real-time Yantra AI Agent
             responses, poll incremental conversation updates, or reopen resolved tickets anytime.
           </p>
         </div>
@@ -371,7 +371,7 @@ export default function CustomerSupportCenter({
 
               <div>
                 <label className="block text-xs font-semibold text-stone-700 mb-1">
-                  Link FoodHub Order (Optional)
+                  Link FoodSpot Order (Optional)
                 </label>
                 <select
                   value={orderNumber}

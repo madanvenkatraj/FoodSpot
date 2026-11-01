@@ -68,9 +68,9 @@ export default function YantraSupportWidget({
     welcomeMessage: string;
     primaryColor: string;
   }>({
-    title: 'FoodHub × Yantra Ticketing Agent',
+    title: 'FoodSpot × Yantra Ticketing Agent',
     welcomeMessage:
-      'Welcome to FoodHub Support powered by Yantra Ticketing Agent. Select an issue or link an order for immediate assistance.',
+      'Welcome to FoodSpot Support powered by Yantra Ticketing Agent. Select an issue or link an order for immediate assistance.',
     primaryColor: '#EA580C',
   });
 

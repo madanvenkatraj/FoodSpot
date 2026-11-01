@@ -108,7 +108,7 @@ export default function AdminLoginPage() {
 
       if (data.token && data.user) {
         setAdminSession(data.token, data.user);
-        showToast('Administrator MFA verified. Welcome to FoodHub Admin Console.');
+        showToast('Administrator MFA verified. Welcome to FoodSpot Admin Console.');
         router.push('/admin/dashboard');
       }
     } catch {
@@ -128,7 +128,7 @@ export default function AdminLoginPage() {
               <Flame className="h-5 w-5" />
             </div>
             <div>
-              <span className="font-display text-lg font-extrabold text-white">FoodHub</span>
+              <span className="font-display text-lg font-extrabold text-white">FoodSpot</span>
               <span className="ml-2 rounded-md bg-amber-500/15 border border-amber-500/30 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-300">
                 Admin Console
               </span>
@@ -159,7 +159,7 @@ export default function AdminLoginPage() {
               <p className="text-xs text-stone-400">
                 {mfaChallengeToken
                   ? `Step 2 of 2 • Verify identity for ${mfaAccountEmail}`
-                  : 'FoodHub Operations & Platform Governance'}
+                  : 'FoodSpot Operations & Platform Governance'}
               </p>
             </div>
           </div>
@@ -308,7 +308,7 @@ export default function AdminLoginPage() {
       </main>
 
       <footer className="py-4 text-center text-xs text-stone-600">
-        FoodHub Admin Console • Role-Isolated RBAC &amp; RFC 6238 TOTP Security
+        FoodSpot Admin Console • Role-Isolated RBAC &amp; RFC 6238 TOTP Security
       </footer>
     </div>
   );

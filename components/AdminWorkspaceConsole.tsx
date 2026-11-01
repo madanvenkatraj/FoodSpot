@@ -341,7 +341,7 @@ export default function AdminWorkspaceConsole({
               </div>
               <div>
                 <span className="font-display text-base font-extrabold text-white block leading-none">
-                  FoodHub
+                  FoodSpot
                 </span>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400">
                   Admin Console
@@ -493,7 +493,7 @@ export default function AdminWorkspaceConsole({
               {section.replace(/-/g, ' ')}
             </h1>
             <p className="text-xs text-stone-500">
-              FoodHub Administrative Operations • Real-Time Synchronization with Customer App
+              FoodSpot Administrative Operations • Real-Time Synchronization with Customer App
             </p>
           </div>
 
