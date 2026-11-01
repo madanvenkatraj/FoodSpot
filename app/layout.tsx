@@ -22,18 +22,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'FoodHub — Online Food Ordering & Delivery Platform',
+  title: 'FoodSpot — Online Food Ordering & Delivery Platform',
   description:
     'End-to-end multi-role food ordering and delivery platform with real-time order tracking, restaurant & delivery partner dashboards, admin analytics, and Yantra Ticketing Agent integration.',
   openGraph: {
-    title: 'FoodHub — Online Food Ordering & Delivery Platform',
+    title: 'FoodSpot — Online Food Ordering & Delivery Platform',
     description:
       'End-to-end multi-role food ordering and delivery platform with real-time order tracking, restaurant & delivery partner dashboards, admin analytics, and Yantra Ticketing Agent integration.',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FoodHub — Online Food Ordering & Delivery Platform',
+    title: 'FoodSpot — Online Food Ordering & Delivery Platform',
     description:
       'End-to-end multi-role food ordering and delivery platform with real-time order tracking, restaurant & delivery partner dashboards, admin analytics, and Yantra Ticketing Agent integration.',
   },
@@ -45,20 +45,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${plusJakarta.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
-      <head>
-        {/* yantra-support-widget:start */}
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-[#FAF9F6] text-stone-900 antialiased selection:bg-orange-600 selection:text-white font-sans"
+      >
+        <WorkspaceProvider>{children}</WorkspaceProvider>
+        {/* yantra-support-widget:start — Placed before </body> per Yantra docs */}
         <script
           src="https://www.yantraaicofounder.com/api/external/ticketing/widget.js"
           data-api-key="ytk_Hbp3SOJN4gerV_RrDtwzxEORf3_sq4s2BLByEzZUVgTVOP4E"
           defer
         ></script>
         {/* yantra-support-widget:end */}
-      </head>
-      <body
-        suppressHydrationWarning
-        className="min-h-screen bg-[#FAF9F6] text-stone-900 antialiased selection:bg-orange-600 selection:text-white font-sans"
-      >
-        <WorkspaceProvider>{children}</WorkspaceProvider>
       </body>
     </html>
   );

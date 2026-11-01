@@ -111,11 +111,11 @@ export async function signInCustomerWithGoogle(): Promise<CustomerGoogleAuthResu
 
   const uid = user.uid.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 128);
   const email = user.email.trim().toLowerCase().slice(0, 254);
-  const displayName = (user.displayName || email.split('@')[0] || 'FoodHub Customer')
+  const displayName = (user.displayName || email.split('@')[0] || 'FoodSpot Customer')
     .trim()
     .slice(0, 120);
   const photoURL = (user.photoURL || '').trim().slice(0, 1024);
-  const profilePath = `customerProfiles/${uid}`;
+  // profilePath used for non-blocking Firestore sync only
   const profileRef = doc(db, 'customerProfiles', uid);
 
   try {
@@ -145,14 +145,11 @@ export async function signInCustomerWithGoogle(): Promise<CustomerGoogleAuthResu
         updatedAt: serverTimestamp(),
       });
     }
-  } catch (err) {
-    // Log structured Firestore error info if permissions or schema check failed,
-    // without blocking Customer App session creation
-    try {
-      handleFirestoreError(err, OperationType.WRITE, profilePath);
-    } catch {
-      // handled
-    }
+  } catch {
+    // Non-blocking: Firestore profile sync may fail in production if the domain
+    // is not yet added to Firebase Authorized Domains, or Firestore rules deny
+    // the write. Google OAuth authentication still succeeds in all cases.
+    // Fix: Add your Render domain to Firebase Console → Authentication → Authorized domains.
   }
 
   const idToken = await user.getIdToken();
