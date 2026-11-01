@@ -1670,7 +1670,7 @@ export function getDb(): DatabaseSchema {
       }
     }
   } catch (err) {
-    console.warn('Initializing fresh FoodHub database store:', err);
+    console.warn('[FoodSpot] Initializing fresh database store:', err);
   }
 
   const seeded = buildInitialSeedData();
@@ -1679,16 +1679,42 @@ export function getDb(): DatabaseSchema {
   return seeded;
 }
 
+let _isSaving = false;
+let _pendingSave: DatabaseSchema | null = null;
+
 export function saveDb(db: DatabaseSchema = getDb()): void {
   global._foodhubDbCache = db;
-  try {
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
-    }
-    fs.writeFileSync(DB_FILE_PATH, JSON.stringify(db, null, 2), 'utf8');
-  } catch (err) {
-    console.error('Failed to persist database file:', err);
+
+  // Queue concurrent saves — only the last write wins, preventing partial-write
+  // JSON corruption that caused 'SyntaxError: Unexpected end of JSON input'
+  if (_isSaving) {
+    _pendingSave = db;
+    return;
   }
+
+  const flush = (data: DatabaseSchema) => {
+    _isSaving = true;
+    try {
+      if (!fs.existsSync(DATA_DIR)) {
+        fs.mkdirSync(DATA_DIR, { recursive: true });
+      }
+      // Atomic write: write to .tmp then rename to avoid partial-read corruption
+      const tmpPath = `${DB_FILE_PATH}.tmp`;
+      fs.writeFileSync(tmpPath, JSON.stringify(data, null, 2), 'utf8');
+      fs.renameSync(tmpPath, DB_FILE_PATH);
+    } catch (err) {
+      console.error('[FoodSpot] Failed to persist database file:', err);
+    } finally {
+      _isSaving = false;
+      if (_pendingSave) {
+        const next = _pendingSave;
+        _pendingSave = null;
+        flush(next);
+      }
+    }
+  };
+
+  flush(db);
 }
 
 export function appendAuditLog(params: {

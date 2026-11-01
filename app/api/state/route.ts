@@ -17,44 +17,52 @@ export async function GET() {
   const safeUsers = db.users.map(
     ({ passwordHash: _ph, mfaSecret: _ms, recoveryCodes: _rc, resetToken: _rt, ...u }) => u
   );
-  return NextResponse.json({
-    users: safeUsers,
-    categories: db.categories,
-    restaurants: db.restaurants,
-    foodItems: db.foodItems,
-    addresses: db.addresses,
-    orders: db.orders,
-    deliveryPartners: db.deliveryPartners,
-    deliveries: db.deliveries,
-    reviews: db.reviews,
-    coupons: db.coupons,
-    notifications: db.notifications,
-    supportTicketReferences: db.supportTicketReferences,
-    webhookEvents: db.webhookEvents,
-    auditLogs: db.auditLogs,
-    activeSessionsCount: (db.sessions || []).filter(
-      (s) => !s.revokedAt && new Date(s.expiresAt).getTime() > Date.now()
-    ).length,
-    yantraConfig: {
-      platformUrl: db.yantraConfig.platformUrl,
-      apiKey: db.yantraConfig.apiKey,
-      mode: db.yantraConfig.mode,
-      welcomeMessage: db.yantraConfig.welcomeMessage,
-      supportTitle: db.yantraConfig.supportTitle,
-      primaryColor: db.yantraConfig.primaryColor,
-      enabled: db.yantraConfig.enabled !== false,
-      appDomain: db.yantraConfig.appDomain || 'foodhub.app',
-      appDescription:
-        db.yantraConfig.appDescription ||
-        'FoodHub is an online food ordering and delivery platform with live order tracking, restaurant menus, and customer support.',
-      webhookUrl: db.yantraConfig.webhookUrl || '/api/webhooks/yantra/tickets',
-      webhookEnabled: db.yantraConfig.webhookEnabled !== false,
-      webhookConsecutiveFailures: db.yantraConfig.webhookConsecutiveFailures || 0,
-      webhookPausedUntil: db.yantraConfig.webhookPausedUntil || null,
-      apiKeyMasked: `${db.yantraConfig.apiKey.slice(0, 12)}••••••••`,
-      webhookSecretMasked: `${db.yantraConfig.webhookSecret.slice(0, 12)}••••••••`,
+  return NextResponse.json(
+    {
+      users: safeUsers,
+      categories: db.categories,
+      restaurants: db.restaurants,
+      foodItems: db.foodItems,
+      addresses: db.addresses,
+      orders: db.orders,
+      deliveryPartners: db.deliveryPartners,
+      deliveries: db.deliveries,
+      reviews: db.reviews,
+      coupons: db.coupons,
+      notifications: db.notifications,
+      supportTicketReferences: db.supportTicketReferences,
+      webhookEvents: db.webhookEvents,
+      auditLogs: db.auditLogs,
+      activeSessionsCount: (db.sessions || []).filter(
+        (s) => !s.revokedAt && new Date(s.expiresAt).getTime() > Date.now()
+      ).length,
+      yantraConfig: {
+        platformUrl: db.yantraConfig.platformUrl,
+        apiKey: db.yantraConfig.apiKey,
+        mode: db.yantraConfig.mode,
+        welcomeMessage: db.yantraConfig.welcomeMessage,
+        supportTitle: db.yantraConfig.supportTitle,
+        primaryColor: db.yantraConfig.primaryColor,
+        enabled: db.yantraConfig.enabled !== false,
+        appDomain: db.yantraConfig.appDomain || 'foodspot.app',
+        appDescription:
+          db.yantraConfig.appDescription ||
+          'FoodSpot is an online food ordering and delivery platform with live order tracking, restaurant menus, and customer support.',
+        webhookUrl: db.yantraConfig.webhookUrl || '/api/webhooks/yantra/tickets',
+        webhookEnabled: db.yantraConfig.webhookEnabled !== false,
+        webhookConsecutiveFailures: db.yantraConfig.webhookConsecutiveFailures || 0,
+        webhookPausedUntil: db.yantraConfig.webhookPausedUntil || null,
+        apiKeyMasked: `${db.yantraConfig.apiKey.slice(0, 12)}••••••••`,
+        webhookSecretMasked: `${db.yantraConfig.webhookSecret.slice(0, 12)}••••••••`,
+      },
     },
-  });
+    {
+      headers: {
+        // Prevent CDN/browser caching of live state data
+        'Cache-Control': 'no-store, no-cache, must-revalidate',
+      },
+    }
+  );
 }
 
 const ADMIN_PROTECTED_ACTIONS = new Set([
@@ -92,7 +100,7 @@ export async function POST(req: NextRequest) {
     let adminActor = {
       id: 'usr_admin_1',
       name: 'Platform Admin',
-      email: 'admin@foodhub.com',
+      email: 'admin@foodspot.app',
     };
 
     if (ADMIN_PROTECTED_ACTIONS.has(action)) {
@@ -128,7 +136,7 @@ export async function POST(req: NextRequest) {
         ownerId: adminActor.id,
         name: String(restaurant.name).trim(),
         description: String(
-          restaurant.description || 'Chef-curated culinary kitchen on FoodHub.'
+          restaurant.description || 'Chef-curated culinary kitchen on FoodSpot.'
         ).trim(),
         cuisine: Array.isArray(restaurant.cuisine)
           ? restaurant.cuisine
@@ -150,7 +158,7 @@ export async function POST(req: NextRequest) {
         deliveryFee: Number(restaurant.deliveryFee ?? 2.49),
         costForTwo: Number(restaurant.costForTwo || 35),
         featured: Boolean(restaurant.featured),
-        promoTag: restaurant.promoTag ? String(restaurant.promoTag).trim() : 'NEW ON FOODHUB',
+        promoTag: restaurant.promoTag ? String(restaurant.promoTag).trim() : 'NEW ON FOODSPOT',
         serviceableZones: Array.isArray(restaurant.serviceableZones)
           ? restaurant.serviceableZones
           : ['SoMa', 'Mission District', 'Downtown', 'Castro', 'Marina District', 'Hayes Valley'],
@@ -473,7 +481,7 @@ export async function POST(req: NextRequest) {
         customerId,
         customerName,
         restaurantId,
-        restaurantName: rest?.name || 'FoodHub Restaurant',
+        restaurantName: rest?.name || 'FoodSpot Restaurant',
         foodItemId,
         orderId,
         rating: Math.min(5, Math.max(1, Number(rating || 5))),

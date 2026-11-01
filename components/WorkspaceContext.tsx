@@ -208,13 +208,17 @@ export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
   );
 
   const refreshState = useCallback(async (silent = false) => {
+    // Skip polling when tab is backgrounded — avoids unnecessary server load
+    if (silent && typeof document !== 'undefined' && document.visibilityState === 'hidden') {
+      return;
+    }
     if (!silent) setLoadingData(true);
     try {
       const res = await fetch('/api/state', { cache: 'no-store' });
       const data: AppStatePayload = await res.json();
       setAppData(data);
     } catch {
-      // keep existing state
+      // keep existing state on network error
     } finally {
       if (!silent) setLoadingData(false);
     }
@@ -309,7 +313,7 @@ export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
 
     const interval = setInterval(() => {
       void refreshState(true);
-    }, 6000);
+    }, 12000); // poll every 12s (was 6s — reduced to ease server load during dev compilation)
 
     return () => {
       window.cancelAnimationFrame(frameId);
@@ -328,7 +332,7 @@ export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
       }
     };
 
-    window.addEventListener('foodhub:order-push-alert', handlePushAlertEvent);
+    window.addEventListener('foodspot:order-push-alert', handlePushAlertEvent);
 
     let channel: BroadcastChannel | null = null;
     if ('BroadcastChannel' in window) {
@@ -341,7 +345,7 @@ export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
             void dispatchOrderStatusBrowserPush({
               orderId: data.orderId,
               orderNumber: data.orderNumber || data.orderId,
-              restaurantName: data.restaurantName || 'FoodHub Restaurant',
+              restaurantName: data.restaurantName || 'FoodSpot Restaurant',
               previousStatus: data.previousStatus,
               newStatus: data.newStatus,
               customNote: data.note,
@@ -355,7 +359,7 @@ export function WorkspaceProvider({ children }: { children: React.ReactNode }) {
     }
 
     return () => {
-      window.removeEventListener('foodhub:order-push-alert', handlePushAlertEvent);
+      window.removeEventListener('foodspot:order-push-alert', handlePushAlertEvent);
       if (channel) channel.close();
     };
   }, [refreshState]);

@@ -50,7 +50,8 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  saveDb(db);
+  // NOTE: GET is read-only — do NOT call saveDb() here.
+  // Concurrent reads + writes caused 'SyntaxError: Unexpected end of JSON input'.
   return NextResponse.json({
     authenticated: true,
     workspace,
@@ -233,7 +234,7 @@ export async function POST(req: NextRequest) {
         userId: user.id,
         workspace,
         mfaVerified: workspace === 'admin' ? !user.mfaEnabled : false,
-        userAgent: req.headers.get('user-agent') || 'FoodHub Web Client',
+        userAgent: req.headers.get('user-agent') || 'FoodSpot Web Client',
         createdAt: now,
         lastActiveAt: now,
         expiresAt,
@@ -359,7 +360,7 @@ export async function POST(req: NextRequest) {
         userId: user.id,
         workspace: 'admin',
         mfaVerified: true,
-        userAgent: req.headers.get('user-agent') || 'FoodHub Admin Console',
+        userAgent: req.headers.get('user-agent') || 'FoodSpot Admin Console',
         createdAt: now,
         lastActiveAt: now,
         expiresAt,
@@ -453,7 +454,7 @@ export async function POST(req: NextRequest) {
         userId: newUser.id,
         workspace: 'customer',
         mfaVerified: false,
-        userAgent: req.headers.get('user-agent') || 'FoodHub Customer Client',
+        userAgent: req.headers.get('user-agent') || 'FoodSpot Customer Client',
         createdAt: now,
         lastActiveAt: now,
         expiresAt,
@@ -662,7 +663,7 @@ export async function POST(req: NextRequest) {
           provisioningSetup: {
             mfaSecret,
             recoveryCodes,
-            otpauthUrl: `otpauth://totp/FoodHub:${encodeURIComponent(newAdmin.email)}?secret=${mfaSecret}&issuer=FoodHub`,
+            otpauthUrl: `otpauth://totp/FoodSpot:${encodeURIComponent(newAdmin.email)}?secret=${mfaSecret}&issuer=FoodSpot`,
           },
         },
         { status: 201 }
@@ -835,7 +836,7 @@ export async function POST(req: NextRequest) {
         userId: user.id,
         workspace: 'customer',
         mfaVerified: false,
-        userAgent: req.headers.get('user-agent') || 'FoodHub Customer App (Firebase Google Auth)',
+        userAgent: req.headers.get('user-agent') || 'FoodSpot Customer App (Firebase Google Auth)',
         createdAt: now,
         lastActiveAt: now,
         expiresAt,

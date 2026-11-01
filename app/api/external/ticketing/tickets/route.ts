@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
     const {
       customerId,
       customerName = 'Aarav Sharma',
-      customerEmail = 'customer@foodhub.com',
+      customerEmail = 'customer@foodspot.app',
       customerPhone = '',
       orderId = null,
       orderNumber = null,

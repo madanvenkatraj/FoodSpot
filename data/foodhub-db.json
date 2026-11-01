@@ -98,7 +98,30 @@
       "updatedAt": "2026-11-01T07:23:04.813Z"
     }
   ],
-  "sessions": [],
+  "sessions": [
+    {
+      "id": "sess_1793530131208_dvz10e",
+      "userId": "usr_admin_default",
+      "workspace": "admin",
+      "mfaVerified": true,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "createdAt": "2026-11-01T10:48:51.207Z",
+      "lastActiveAt": "2026-11-01T10:48:51.207Z",
+      "expiresAt": "2026-11-01T22:48:51.208Z",
+      "revokedAt": "2026-11-01T10:50:14.300Z"
+    },
+    {
+      "id": "sess_1793530106417_kclibc",
+      "userId": "usr_admin_default",
+      "workspace": "admin",
+      "mfaVerified": true,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "createdAt": "2026-11-01T10:48:26.303Z",
+      "lastActiveAt": "2026-11-01T10:48:26.303Z",
+      "expiresAt": "2026-11-01T22:48:26.417Z",
+      "revokedAt": null
+    }
+  ],
   "categories": [
     {
       "id": "cat_pizza",
@@ -1574,6 +1597,42 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "aud_1793530214302_brwm",
+      "actorId": "usr_admin_default",
+      "actorName": "FoodHub Admin (admin@gmail.com)",
+      "actorRole": "admin",
+      "action": "AUTH_LOGOUT",
+      "resourceType": "AuthSession",
+      "resourceId": "sess_1793530131208_dvz10e",
+      "details": "Revoked admin session on logout",
+      "ipAddress": "127.0.0.1",
+      "createdAt": "2026-11-01T10:50:14.302Z"
+    },
+    {
+      "id": "aud_1793530131209_wxs3",
+      "actorId": "usr_admin_default",
+      "actorName": "FoodHub Admin (admin@gmail.com)",
+      "actorRole": "admin",
+      "action": "AUTH_LOGIN_SUCCESS",
+      "resourceType": "AuthSession",
+      "resourceId": "sess_1793530131208_dvz10e",
+      "details": "Authenticated session started in admin workspace",
+      "ipAddress": "127.0.0.1",
+      "createdAt": "2026-11-01T10:48:51.209Z"
+    },
+    {
+      "id": "aud_1793530106454_awon",
+      "actorId": "usr_admin_default",
+      "actorName": "FoodHub Admin (admin@gmail.com)",
+      "actorRole": "admin",
+      "action": "AUTH_LOGIN_SUCCESS",
+      "resourceType": "AuthSession",
+      "resourceId": "sess_1793530106417_kclibc",
+      "details": "Authenticated session started in admin workspace",
+      "ipAddress": "127.0.0.1",
+      "createdAt": "2026-11-01T10:48:26.454Z"
+    },
     {
       "id": "aud_1",
       "actorId": "usr_customer_1",
