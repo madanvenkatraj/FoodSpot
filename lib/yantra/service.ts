@@ -783,7 +783,12 @@ export function processYantraWebhookPayload(params: {
       httpStatus: 401,
       body: {
         success: false,
-        error: verification.reason || 'Invalid webhook signature',
+        error:
+          verification.reason === 'HMAC-SHA256 signature mismatch'
+            ? process.env.YANTRA_WEBHOOK_SECRET?.trim()
+              ? 'HMAC-SHA256 signature mismatch. YANTRA_WEBHOOK_SECRET is set on this server, but it is not the secret Yantra used to sign this delivery.'
+              : 'HMAC-SHA256 signature mismatch. This server is using its built-in webhook secret. Set YANTRA_WEBHOOK_SECRET on Render to the whsec_ value from Yantra, then redeploy.'
+            : verification.reason || 'Invalid webhook signature',
         consecutiveFailures: nextFailures,
         pausedUntil: db.yantraConfig.webhookPausedUntil || null,
         deliveryId,

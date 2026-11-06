@@ -535,8 +535,12 @@ export function verifyYantraWebhookSignature(
   }
 
   const parts = signatureHeader.split(',').reduce<Record<string, string>>((acc, part) => {
-    const [k, v] = part.trim().split('=');
-    if (k && v) acc[k] = v;
+    const trimmed = part.trim();
+    const splitAt = trimmed.indexOf('=');
+    if (splitAt <= 0) return acc;
+    const key = trimmed.slice(0, splitAt).trim();
+    const value = trimmed.slice(splitAt + 1).trim();
+    if (key && value) acc[key] = value;
     return acc;
   }, {});
 
@@ -556,21 +560,46 @@ export function verifyYantraWebhookSignature(
     return { valid: false, timestamp: 0, reason: 'Invalid signature timestamp value' };
   }
 
-  const expectedWithTimestamp = crypto
-    .createHmac('sha256', secret)
-    .update(`${timestamp}.${rawBody}`, 'utf8')
-    .digest('hex');
-  const expectedRawOnly = crypto.createHmac('sha256', secret).update(rawBody, 'utf8').digest('hex');
+  const keys: Array<string | Buffer> = [secret];
+  if (secret.startsWith('whsec_')) {
+    const rest = secret.slice('whsec_'.length);
+    if (rest) keys.push(rest);
+    try {
+      const decoded = Buffer.from(rest, 'base64');
+      if (decoded.length > 0) keys.push(decoded);
+    } catch {
+      // The remainder is not base64; the string forms above still apply.
+    }
+  }
 
-  const sigBuf = Buffer.from(signatureV1, 'utf8');
-  const exp1Buf = Buffer.from(expectedWithTimestamp, 'utf8');
-  const exp2Buf = Buffer.from(expectedRawOnly, 'utf8');
+  const payloads = [
+    `${timestampStr}.${rawBody}`,
+    `${timestamp}.${rawBody}`,
+    rawBody,
+    rawBody.replace(/\r\n/g, '\n'),
+  ];
+  const givenHex = signatureV1.trim().toLowerCase();
+  const givenRaw = signatureV1.trim();
+  const sameText = (left: string, right: string) => {
+    const a = Buffer.from(left);
+    const b = Buffer.from(right);
+    return a.length === b.length && crypto.timingSafeEqual(a, b);
+  };
+  let matched = false;
+  for (const key of keys) {
+    for (const payload of payloads) {
+      const digest = crypto.createHmac('sha256', key).update(payload, 'utf8');
+      const hex = digest.copy().digest('hex');
+      const b64 = digest.copy().digest('base64');
+      if (sameText(givenHex, hex) || sameText(givenRaw, b64)) {
+        matched = true;
+        break;
+      }
+    }
+    if (matched) break;
+  }
 
-  const matchesTimestamped =
-    sigBuf.length === exp1Buf.length && crypto.timingSafeEqual(sigBuf, exp1Buf);
-  const matchesRaw = sigBuf.length === exp2Buf.length && crypto.timingSafeEqual(sigBuf, exp2Buf);
-
-  if (!matchesTimestamped && !matchesRaw) {
+  if (!matched) {
     return {
       valid: false,
       timestamp,
