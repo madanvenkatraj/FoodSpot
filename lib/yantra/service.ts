@@ -732,13 +732,30 @@ export function processYantraWebhookPayload(params: {
     };
   }
 
-  // 1. Verify HMAC-SHA256 signature against raw request body
-  const verification = verifyYantraWebhookSignature(
+  // 1. Verify HMAC-SHA256 over `${timestamp}.${rawBody}`.
+  // Accept the Render/env secret and the secret saved in Admin, since Yantra signs with the whsec_ value shown when the webhook is created.
+  const tolerance = params.bypassTimestampTolerance ? 86400 * 365 : 300;
+  const secretCandidates = [process.env.YANTRA_WEBHOOK_SECRET, db.yantraConfig.webhookSecret]
+    .map((secret) => (secret || '').trim())
+    .filter((secret, index, all) => secret.length > 0 && all.indexOf(secret) === index);
+  let verification = verifyYantraWebhookSignature(
     params.rawBody,
     params.signatureHeader,
-    db.yantraConfig.webhookSecret,
-    params.bypassTimestampTolerance ? 86400 * 365 : 300
+    secretCandidates[0] || db.yantraConfig.webhookSecret,
+    tolerance
   );
+  if (
+    !verification.valid &&
+    verification.reason === 'HMAC-SHA256 signature mismatch' &&
+    secretCandidates[1]
+  ) {
+    verification = verifyYantraWebhookSignature(
+      params.rawBody,
+      params.signatureHeader,
+      secretCandidates[1],
+      tolerance
+    );
+  }
 
   if (!verification.valid) {
     const isTimestampErr = verification.reason?.includes('timestamp');
@@ -814,6 +831,113 @@ export function processYantraWebhookPayload(params: {
     return {
       httpStatus: 400,
       body: { success: false, error: 'Malformed JSON body' },
+    };
+  }
+
+  // Official Yantra envelope uses type + data.ticket, and a test ping must answer 204.
+  const envelope = parsed as {
+    id?: string;
+    type?: string;
+    event?: YantraWebhookEventType;
+    test?: boolean;
+    timestamp?: number;
+    data?: {
+      ticket?: Record<string, unknown>;
+      message?: Record<string, unknown> | string;
+    } & NonNullable<(typeof parsed)['data']>;
+  };
+  const ticketObj =
+    envelope.data?.ticket && typeof envelope.data.ticket === 'object' ? envelope.data.ticket : null;
+  const customerObj =
+    ticketObj?.customer && typeof ticketObj.customer === 'object'
+      ? (ticketObj.customer as Record<string, unknown>)
+      : null;
+  const rawMessage = envelope.data?.message ?? ticketObj?.message ?? ticketObj?.latestMessage;
+  const messageObj =
+    rawMessage && typeof rawMessage === 'object' ? (rawMessage as Record<string, unknown>) : null;
+  const messageText =
+    typeof rawMessage === 'string'
+      ? rawMessage
+      : String(messageObj?.message || messageObj?.body || messageObj?.text || messageObj?.content || '');
+
+  parsed.event = (envelope.type || envelope.event || parsed.event) as YantraWebhookEventType | undefined;
+  parsed.id = envelope.id || parsed.id;
+  parsed.timestamp = envelope.timestamp || parsed.timestamp;
+  parsed.ticketNumber = String(
+    parsed.ticketNumber ||
+      envelope.data?.ticketNumber ||
+      ticketObj?.ticketNumber ||
+      ticketObj?.number ||
+      ''
+  );
+  parsed.data = {
+    ...(envelope.data || {}),
+    ticketNumber: parsed.ticketNumber || envelope.data?.ticketNumber,
+    customerId: String(envelope.data?.customerId || ticketObj?.customerId || customerObj?.id || ''),
+    customerName: String(
+      envelope.data?.customerName || ticketObj?.customerName || customerObj?.name || ''
+    ),
+    customerEmail: String(
+      envelope.data?.customerEmail || ticketObj?.customerEmail || customerObj?.email || ''
+    ),
+    orderNumber:
+      (envelope.data?.orderNumber as string | undefined) ||
+      (ticketObj?.orderNumber as string | undefined),
+    category: (envelope.data?.category || ticketObj?.category) as SupportTicketCategory | undefined,
+    subject: String(envelope.data?.subject || ticketObj?.subject || ''),
+    description: String(envelope.data?.description || ticketObj?.description || ticketObj?.body || ''),
+    status: (envelope.data?.status || ticketObj?.status) as SupportTicketStatus | undefined,
+    resolutionSummary: String(
+      envelope.data?.resolutionSummary ||
+        ticketObj?.resolutionSummary ||
+        ticketObj?.resolution ||
+        ticketObj?.resolutionNotes ||
+        ''
+    ),
+    message: messageText
+      ? {
+          id: String(messageObj?.id || `msg_wh_${Date.now()}`),
+          senderType: (messageObj?.senderType || messageObj?.authorType || 'agent') as
+            | 'customer'
+            | 'agent'
+            | 'system',
+          senderName: String(
+            messageObj?.senderName || messageObj?.authorName || 'Yantra Ticketing Agent'
+          ),
+          message: messageText,
+          isInternal: Boolean(messageObj?.isInternal || messageObj?.internal),
+        }
+      : envelope.data?.message && typeof envelope.data.message === 'object'
+        ? {
+            id: String((envelope.data.message as { id?: string }).id || `msg_wh_${Date.now()}`),
+            senderType: 'agent' as const,
+            senderName: 'Yantra Ticketing Agent',
+            message: messageText,
+            isInternal: false,
+          }
+        : undefined,
+  };
+
+  if (envelope.test === true) {
+    db.yantraConfig.webhookConsecutiveFailures = 0;
+    db.yantraConfig.webhookPausedUntil = null;
+    db.webhookEvents.unshift({
+      id: `wh_${Date.now()}_test`,
+      deliveryId: params.deliveryHeader || envelope.id || `deliv_test_${Date.now()}`,
+      eventType: (parsed.event || 'ticket.message') as YantraWebhookEventType,
+      ticketNumber: parsed.ticketNumber || 'TEST',
+      signatureHeader: params.signatureHeader || '',
+      timestamp: verification.timestamp,
+      rawPayload: params.rawBody,
+      status: 'processed',
+      httpStatus: 204,
+      errorMessage: null,
+      processedAt: nowIso,
+    });
+    saveDb(db);
+    return {
+      httpStatus: 204,
+      body: { success: true, test: true },
     };
   }
 

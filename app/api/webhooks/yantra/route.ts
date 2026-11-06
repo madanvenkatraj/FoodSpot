@@ -27,6 +27,10 @@ export async function POST(req: NextRequest) {
     isManualTestReset,
   });
 
+  if (result.httpStatus === 204) {
+    return new NextResponse(null, { status: 204 });
+  }
+
   return NextResponse.json(result.body, { status: result.httpStatus });
 }
 
