@@ -593,9 +593,8 @@ export function verifyYantraWebhookSignature(
   let matched = false;
   for (const key of keys) {
     for (const payload of payloads) {
-      const digest = crypto.createHmac('sha256', key).update(payload, 'utf8');
-      const hex = digest.copy().digest('hex');
-      const b64 = digest.copy().digest('base64');
+      const hex = crypto.createHmac('sha256', key).update(payload, 'utf8').digest('hex');
+      const b64 = crypto.createHmac('sha256', key).update(payload, 'utf8').digest('base64');
       if (sameText(givenHex, hex) || sameText(givenRaw, b64)) {
         matched = true;
         break;
