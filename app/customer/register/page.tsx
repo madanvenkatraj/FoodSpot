@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
@@ -61,6 +61,11 @@ export default function CustomerRegisterPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const strength = useMemo(() => computePasswordStrength(password), [password]);
+
+  useEffect(() => {
+    const preset = new URLSearchParams(window.location.search).get('email');
+    if (preset) setEmail(preset);
+  }, []);
 
   const handleGoogleSignUp = async () => {
     setErrorMessage(null);

@@ -36,28 +36,6 @@ export default function WorkspaceRouteGuard({
         if (cancelled) return;
 
         if (!result.authenticated || !result.user) {
-          if (
-            workspace === 'admin' &&
-            customerUser &&
-            !customerUser.allowedWorkspaces?.includes('admin')
-          ) {
-            setDeniedMessage(
-              'Access Denied: Customer accounts cannot access the Admin Console workspace.'
-            );
-            setChecking(false);
-            return;
-          }
-          if (
-            workspace === 'customer' &&
-            adminUser &&
-            !adminUser.allowedWorkspaces?.includes('customer')
-          ) {
-            setDeniedMessage(
-              'Access Denied: Your administrator account does not have Customer App workspace permission.'
-            );
-            setChecking(false);
-            return;
-          }
           router.replace(workspace === 'admin' ? '/admin/login' : '/customer/login');
           return;
         }
@@ -79,7 +57,7 @@ export default function WorkspaceRouteGuard({
       cancelled = true;
       window.cancelAnimationFrame(frameId);
     };
-  }, [workspace, revalidateWorkspace, router, customerUser, adminUser]);
+  }, [workspace, revalidateWorkspace, router]);
 
   const isReady = workspace === 'admin' ? adminAuthReady : customerAuthReady;
   const activeUser = workspace === 'admin' ? adminUser : customerUser;

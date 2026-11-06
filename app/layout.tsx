@@ -50,10 +50,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="min-h-screen bg-[#FAF9F6] text-stone-900 antialiased selection:bg-orange-600 selection:text-white font-sans"
       >
         <WorkspaceProvider>{children}</WorkspaceProvider>
-        {/* yantra-support-widget:start — Placed before </body> per Yantra docs */}
+        {/* yantra-support-widget:start */}
         <script
           src="https://www.yantraaicofounder.com/api/external/ticketing/widget.js"
-          data-api-key="ytk_Hbp3SOJN4gerV_RrDtwzxEORf3_sq4s2BLByEzZUVgTVOP4E"
+          data-api-key="ytk_cpFZQD246Y8G_qG0AEjX5KwXPUsvTx9PP9aUO9PV8UQ5jdZu"
           defer
         ></script>
         {/* yantra-support-widget:end */}

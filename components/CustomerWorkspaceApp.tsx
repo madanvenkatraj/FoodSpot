@@ -2229,7 +2229,10 @@ export default function CustomerWorkspaceApp({
 
       {/* Sticky Bottom Cart Bar when items are in cart */}
       {cart.length > 0 && section !== 'cart' && section !== 'checkout' && (
-        <div className="fixed bottom-16 md:bottom-5 left-1/2 -translate-x-1/2 z-40 w-[94%] max-w-2xl rounded-2xl bg-emerald-700 px-5 py-3.5 text-white shadow-2xl flex items-center justify-between">
+        <div
+          data-sticky-cart
+          className="fixed bottom-16 md:bottom-5 left-1/2 -translate-x-1/2 z-40 w-[94%] max-w-2xl rounded-2xl bg-emerald-700 px-5 py-3.5 text-white shadow-2xl flex items-center justify-between"
+        >
           <div>
             <div className="text-xs font-extrabold uppercase tracking-wider">
               {cartSummary.itemCount} {cartSummary.itemCount === 1 ? 'Item' : 'Items'} • $

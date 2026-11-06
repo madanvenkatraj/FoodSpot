@@ -54,6 +54,7 @@ export default function CustomerLoginPage() {
   const [submitting, setSubmitting] = useState(false);
   const [googleSubmitting, setGoogleSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [offerRegister, setOfferRegister] = useState(false);
 
   // Forgot Password flow state
   const [forgotMode, setForgotMode] = useState(false);
@@ -107,10 +108,10 @@ export default function CustomerLoginPage() {
     }
   };
 
-  const handleLoginSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const signInCustomer = async (emailValue: string, passwordValue: string) => {
     setErrorMessage(null);
-    if (!identifier.trim() || !password) {
+    setOfferRegister(false);
+    if (!emailValue.trim() || !passwordValue) {
       setErrorMessage('Please enter both your email/phone and password.');
       return;
     }
@@ -122,14 +123,15 @@ export default function CustomerLoginPage() {
         body: JSON.stringify({
           action: 'login',
           workspace: 'customer',
-          email: identifier.trim(),
-          password,
+          email: emailValue.trim(),
+          password: passwordValue,
           rememberMe,
         }),
       });
       const data = await res.json();
       if (!res.ok) {
         setErrorMessage(data.error || 'Authentication failed. Please check your credentials.');
+        setOfferRegister(Boolean(data.accountMissing));
         return;
       }
       if (data.token && data.user) {
@@ -142,6 +144,11 @@ export default function CustomerLoginPage() {
     } finally {
       setSubmitting(false);
     }
+  };
+
+  const handleLoginSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await signInCustomer(identifier, password);
   };
 
   const handleRequestPasswordReset = async (e: React.FormEvent) => {
@@ -267,7 +274,17 @@ export default function CustomerLoginPage() {
             {errorMessage && (
               <div role="alert" className="mb-5 flex items-start gap-2.5 rounded-2xl border border-red-200 bg-red-50 p-3.5 text-xs font-semibold text-red-700 animate-fade-in-down">
                 <AlertCircle className="h-4 w-4 shrink-0 text-red-500 mt-0.5" />
-                <span>{errorMessage}</span>
+                <div className="space-y-2">
+                  <p>{errorMessage}</p>
+                  {offerRegister && (
+                    <Link
+                      href={`/customer/register?email=${encodeURIComponent(identifier.trim())}`}
+                      className="inline-flex rounded-lg bg-orange-600 px-3 py-1.5 text-[11px] font-bold text-white hover:bg-orange-700"
+                    >
+                      Create a free customer account
+                    </Link>
+                  )}
+                </div>
               </div>
             )}
 
@@ -475,6 +492,27 @@ export default function CustomerLoginPage() {
                 </button>
               </div>
             )}
+
+            <div className="mt-5 rounded-2xl border border-orange-100 bg-orange-50/70 px-4 py-3 text-xs text-stone-600">
+              <p className="font-bold text-stone-800">Demo customer</p>
+              <p className="mt-1">
+                <span className="font-mono">customer@foodhub.com</span>
+                {' · '}
+                <span className="font-mono">Password123!</span>
+              </p>
+              <button
+                type="button"
+                disabled={submitting || googleSubmitting}
+                onClick={() => {
+                  setIdentifier('customer@foodhub.com');
+                  setPassword('Password123!');
+                  void signInCustomer('customer@foodhub.com', 'Password123!');
+                }}
+                className="mt-2 rounded-lg bg-stone-900 px-3 py-1.5 text-[11px] font-bold text-white hover:bg-stone-800 cursor-pointer disabled:opacity-60"
+              >
+                Sign in as demo customer
+              </button>
+            </div>
 
             {/* Sign Up Link */}
             <div className="mt-6 pt-5 border-t border-stone-100 text-center text-xs text-stone-500">

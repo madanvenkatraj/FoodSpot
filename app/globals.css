@@ -252,3 +252,41 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/*
+ * Official Yantra launcher is fixed at bottom/right 20px.
+ * Lift it above the phone tab bar, and lift both it and the separate
+ * "Yantra contact support" button when the sticky cart bar is showing
+ * so the three never share the same corner.
+ */
+@media (max-width: 767px) {
+  #yantra-support-widget #yw-btn {
+    bottom: 84px !important;
+    right: 20px !important;
+  }
+  #yantra-support-widget #yw-panel {
+    bottom: 152px !important;
+    right: 16px !important;
+  }
+  body:has([data-sticky-cart]) #yantra-support-widget #yw-btn {
+    bottom: 148px !important;
+  }
+  body:has([data-sticky-cart]) #yantra-support-widget #yw-panel {
+    bottom: 216px !important;
+  }
+  body:has([data-sticky-cart]) .yantra-contact-support {
+    bottom: 216px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  body:has([data-sticky-cart]) #yantra-support-widget #yw-btn {
+    bottom: 96px !important;
+  }
+  body:has([data-sticky-cart]) #yantra-support-widget #yw-panel {
+    bottom: 164px !important;
+  }
+  body:has([data-sticky-cart]) .yantra-contact-support {
+    bottom: 96px !important;
+  }
+}

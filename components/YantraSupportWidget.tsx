@@ -46,9 +46,9 @@ interface YantraSupportWidgetProps {
 }
 
 /**
- * Yantra Ticketing Modal & Official External Widget Integration
- * The floating support widget is loaded directly from:
- * <script src="https://www.yantraaicofounder.com/api/external/ticketing/widget.js" data-api-key="ytk_Hbp3SOJN4gerV_RrDtwzxEORf3_sq4s2BLByEzZUVgTVOP4E" defer></script>
+ * In-app Yantra contact desk.
+ * The official support widget is loaded once from app/layout.tsx.
+ * This control stays beside that launcher and never covers it.
  */
 export default function YantraSupportWidget({
   currentUser,
@@ -90,7 +90,7 @@ export default function YantraSupportWidget({
   const [sendingReply, setSendingReply] = useState(false);
   const [pollingLoading, setPollingLoading] = useState(false);
 
-  // Ensure the official Yantra Support Widget script is loaded in the DOM and fetch widget-config
+  // Load local widget copy (title, welcome text). The launcher script itself lives in the root layout.
   useEffect(() => {
     fetch('/api/external/ticketing/widget-config', {
       headers: {
@@ -115,17 +115,6 @@ export default function YantraSupportWidget({
         }
       })
       .catch(() => {});
-
-    const existingScript = document.querySelector(
-      'script[src="https://www.yantraaicofounder.com/api/external/ticketing/widget.js"]'
-    );
-    if (!existingScript) {
-      const script = document.createElement('script');
-      script.src = 'https://www.yantraaicofounder.com/api/external/ticketing/widget.js';
-      script.setAttribute('data-api-key', activeApiKey);
-      script.defer = true;
-      document.head.appendChild(script);
-    }
 
     const handleOpenEvent = (ev: Event) => {
       const customEv = ev as CustomEvent<{
@@ -326,20 +315,20 @@ export default function YantraSupportWidget({
     if (!widgetEnabled) return null;
     const openCount = tickets.filter((t) => t.status !== 'resolved' && t.status !== 'closed').length;
     return (
-      <div className="fixed bottom-5 right-5 z-40">
+      <div className="yantra-contact-support fixed z-[100000] bottom-[152px] right-5 md:bottom-5 md:right-[92px]">
         <button
+          type="button"
           onClick={() => setIsOpen(true)}
-          className="relative w-14 h-14 rounded-full bg-orange-600 hover:bg-orange-700 active:scale-95 text-white shadow-xl transition-all duration-200 flex items-center justify-center cursor-pointer"
-          aria-label="Open Support"
-          title="Contact Support"
+          className="inline-flex h-14 max-w-[calc(100vw-6.5rem)] items-center gap-2.5 rounded-full border border-stone-200 bg-white pl-2 pr-4 text-sm font-semibold text-stone-900 shadow-xl transition hover:border-orange-300 hover:bg-orange-50 active:scale-[0.98] cursor-pointer"
+          aria-label="Yantra contact support"
+          title="Yantra contact support"
         >
-          {/* Chat bubble SVG icon */}
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-            <path fillRule="evenodd" d="M4.848 2.771A49.144 49.144 0 0 1 12 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 0 1-3.476.383.39.39 0 0 0-.297.17l-2.755 4.133a.75.75 0 0 1-1.248 0l-2.755-4.133a.39.39 0 0 0-.297-.17 48.9 48.9 0 0 1-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97Z" clipRule="evenodd" />
-          </svg>
-          {/* Open ticket badge */}
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-stone-900 text-white">
+            <FileText className="h-4 w-4" />
+          </span>
+          <span className="truncate">Yantra contact support</span>
           {openCount > 0 && (
-            <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+            <span className="inline-flex h-5 min-w-5 shrink-0 items-center justify-center rounded-full bg-orange-600 px-1.5 text-[10px] font-bold text-white">
               {openCount}
             </span>
           )}
@@ -349,7 +338,7 @@ export default function YantraSupportWidget({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[100000] bg-black/50 flex items-center justify-center p-4">
       <div className="w-full max-w-lg max-h-[85vh] flex flex-col bg-white border border-stone-200 rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
         <div className="bg-stone-900 text-white px-5 py-4 flex items-center justify-between">

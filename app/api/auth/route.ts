@@ -107,14 +107,31 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      const user = db.users.find(
-        (u) =>
+      const digitsOnly = identifier.replace(/\D/g, '');
+      const user = db.users.find((u) => {
+        const phoneDigits = u.phone.replace(/\D/g, '');
+        return (
           u.email.toLowerCase() === identifier ||
           (u.username && u.username.toLowerCase() === identifier) ||
-          u.phone.replace(/\s+/g, '') === identifier.replace(/\s+/g, '')
-      );
+          u.phone.replace(/\s+/g, '') === identifier.replace(/\s+/g, '') ||
+          (digitsOnly.length >= 10 && phoneDigits.endsWith(digitsOnly))
+        );
+      });
 
-      if (!user || !verifyPassword(password, user.passwordHash)) {
+      if (!user) {
+        return NextResponse.json(
+          {
+            error:
+              workspace === 'customer'
+                ? 'No customer account found for that email. Create a free account to sign in.'
+                : 'No administrator account found for that email.',
+            accountMissing: true,
+          },
+          { status: 404 }
+        );
+      }
+
+      if (!verifyPassword(password, user.passwordHash)) {
         const failure = recordLoginFailure(rateLimitKey);
         const remaining = Math.max(0, 5 - failure.failures);
         appendAuditLog({
