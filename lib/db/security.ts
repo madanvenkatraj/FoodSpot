@@ -524,7 +524,8 @@ export function verifyYantraWebhookSignature(
   rawBody: string,
   signatureHeader: string | null,
   secret: string = DEFAULT_YANTRA_WEBHOOK_SECRET,
-  toleranceSeconds = 300
+  toleranceSeconds = 300,
+  deliveryId?: string | null
 ): {
   valid: boolean;
   timestamp: number;
@@ -578,6 +579,10 @@ export function verifyYantraWebhookSignature(
     rawBody,
     rawBody.replace(/\r\n/g, '\n'),
   ];
+  if (deliveryId) {
+    payloads.push(`${deliveryId}.${timestampStr}.${rawBody}`);
+    payloads.push(`${deliveryId}.${timestamp}.${rawBody}`);
+  }
   const givenHex = signatureV1.trim().toLowerCase();
   const givenRaw = signatureV1.trim();
   const sameText = (left: string, right: string) => {
